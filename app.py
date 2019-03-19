@@ -1,7 +1,7 @@
 import pymongo
 import os
 from flask import Flask
-from config import * 
+#from config import * 
 
 # use os library to set constant
 #MONGODB_URI = os.getenv("MONGO_URI")
