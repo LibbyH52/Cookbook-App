@@ -4,7 +4,7 @@ from flask import Flask
 from config import * 
 
 # use os library to set constant
-MONGODB_URI = os.getenv("MONGO_URI")
+#MONGODB_URI = os.getenv("MONGO_URI")
 app = Flask(__name__)
 
 @app.route('/')
