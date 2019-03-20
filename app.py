@@ -4,10 +4,11 @@ from flask import Flask, render_template, redirect, request, url_for #check mean
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import config
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
-# use os library to set constant
+# use os library to set constants
 app.config['MONGO_URI'] = config.MONGO_URI
 app.config['DB_NAME'] = config.DB_NAME
 
