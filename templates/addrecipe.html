@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add a recipe</h2>
+<div class="container">
+    <form>
+      <div class="row">
+        <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-0 col-lg-9">
+          <label for="recipe_name">Recipe Name: </label>
+          <input type="text" class="form-control" id="recipe_name" placeholder="Recipe Name">
+        </div>
+        <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-0 col-lg-3">
+          <label for="image_url">Upload a recipe image </label>
+          <input type="file" class="form-control" id="image_url">
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="course_name">Course Name</label>
+          <select class="form-control" id="course_name">
+            <option>Choose... </option>
+            <option>Starter or Appetiser</option>
+            <option>Main</option>
+            <option>Dessert</option>
+          </select>
+        </div>
+      <div class="form-group">
+            <label for="cuisine">Cuisine Type</label>
+            <select class="form-control" id="cuisine">
+                <option>Choose...</option>
+                <option>American</option>
+                <option>Caribbean </option>
+                <option>Chinese </option>
+                <option>Italian</option>
+                <option>Japanese</option>
+                <option>Turkish and Middle Eastern</option>
+            </select>
+        </div>
+      <div class="form-group">
+          <label class="form-label" for="Serving Size">Number of Servings</label>
+          <input type="number" min="1" class="form-control" id="Servings">
+      </div>
+      <div class="form-group">
+          <label for="allergens">Allergens </label><br>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="eggs">
+              <label class="form-check-label" for="eggs">Eggs</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="fish" value="fish">
+              <label class="form-check-label" for="fish">Fish</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="milk" value="milk">
+              <label class="form-check-label" for="milk">Milk</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="nuts" value="nuts">
+              <label class="form-check-label" for="nuts">Nuts</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="shellfish" value="shellfish">
+              <label class="form-check-label" for="shellfish">Shellfish</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="soy" value="soy">
+              <label class="form-check-label" for="soy">Soy</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="wheat & gluten" value="wheat & gluten">
+              <label class="form-check-label" for="wheat & gluten">Wheat & Gluten</label>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="ingredients">Recipe Ingredients</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="instructions">Recipe Instructions </label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
