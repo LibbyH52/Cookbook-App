@@ -4,11 +4,10 @@ from flask import Flask, render_template, redirect, request, url_for #check mean
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import config
-from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
-# use os library to set constants
+# constants are set in a config.py file
 app.config['MONGO_URI'] = config.MONGO_URI
 app.config['DB_NAME'] = config.DB_NAME
 
@@ -17,10 +16,17 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-#@app.route('/browse_recipes')
-#def browse_recipes():
-#    return render_template('browseRecipes.html', recipes=mongo.db.recipes.find())
+#route and function to display the recipe name and title,
+@app.route('/browse_recipes')
+def browse_recipes():
+    return render_template('browserecipes.html', recipes=mongo.db.recipes.find())
 
+# retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
+@app.route('/display_recipe/<recipe_id>')
+def display_recipe(recipe_id):
+    return render_template('displayrecipe.html', recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
+    
+# displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html')        

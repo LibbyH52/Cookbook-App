@@ -13,6 +13,9 @@ h2{
     font-size: 3em;
     text-align: center;
 }
+h3{
+    font-size: 2em;
+}
 h5{
     text-align: center;
     font-size: 1em;
@@ -20,6 +23,12 @@ h5{
 .loop-item{
     display: inline-block;
     margin-bottom: 40px;
+}
+ul li{
+    list-style: none;
+}
+.recipe_ingredient{
+    padding-top: 0.5em;
 }
 .card{
     height: 380px;
@@ -31,6 +40,10 @@ h5{
 .btn-primary{
     width: 80%;
     margin: 0 10%;
+}
+img{
+    max-width:100%;
+    margin: 0 auto;
 }
 label{
     font-size: 1em;

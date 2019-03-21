@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<header>
+    
+</header>
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-6">
+                <h3>{{recipe.recipe_name}}</h3> 
+                    <p>recipe author: {{recipe.author}}</p>
+                    <p>course name: {{recipe.course_name}}</p>
+                    <p>cuisine type: {{recipe.cuisine}}</p>
+                    <p>allergens: 
+                    {% for allergen in recipe.allergens %}
+                        <strong>{{allergen}} </strong>
+                    {% endfor %}   
+                    </p>
+                    <p>serves: {{recipe.servings}}</p>
+                    <p>prep time: </p>
+                    <p>cook time: </p>
+                    <p>total time: </p>
+            </div>
+            <div class="col-sm-12 col-md-10 col-lg-6">
+                <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}"> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8">
+                <h4>Ingredients</h4>
+                  <ul>
+                       <!--iterates through theallergens array and displays one at a time-->
+                    {% for ingredient in recipe.ingredients %}
+                    
+                       <li class="recipe_ingredient">{{ingredient.quantity}} {{ingredient.name}}{{ingredient.details}} </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <h4>Directions </h4>
+                    {{recipe.Instructions}} 
+                </div>
+            </div>
+    </div>
+        
+    {% endblock %}
