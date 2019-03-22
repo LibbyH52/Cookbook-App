@@ -2,8 +2,35 @@
     {% block content %}
     <div class="container">
         <h2>Browse Recipes</h2>
+        <div class="form-inline">
+           <div class="row">
+               <div class="col-sm-12 col-md-6 col-lg-4">
+                   <div class="form-group">
+                        <label for="course">Filter by course: </label>
+                        <select class="form-control" id="course">
+                            <option selected>Please choose...</option>
+                        {% for course in course %}
+                          <option value="{{course.course}}"> {{course.course}}</option>
+                         {% endfor %}
+                    </select>
+                   </div>
+               </div>
+                 <div class="col-sm-12 col-md-6 col-lg-4">
+                   <div class="form-group">
+                        <label for="course">Filter by course: </label>
+                        <select class="form-control" id="course">
+                            <option selected>Please choose...</option>
+                        {% for cuisine in cuisine %}
+                              <option> {{cuisine.cuisine}}</option>
+                         {% endfor %}
+                    </select>
+                   </div>
+               </div>
+           </div>
+        </div>
+      
         <div classs="row">
-            <!-- iterates through recipes in the database and displays name a picture for each -->
+            <!-- iterates through recipes in the database and displays name and a picture for each -->
             {% for recipe in recipes %}
                <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
                    <div class="card">

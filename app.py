@@ -19,8 +19,11 @@ mongo = PyMongo(app)
 #route and function to display the recipe name and title,
 @app.route('/browse_recipes')
 def browse_recipes():
-    return render_template('browserecipes.html', recipes=mongo.db.recipes.find())
-
+    courses = mongo.db.course.find()
+    recipes = mongo.db.recipes.find()
+    cuisine = mongo.db.cuisine.find()
+    return render_template('browserecipes.html', recipes=recipes, course=courses, cuisine=cuisine)
+    
 # retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
