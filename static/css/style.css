@@ -1,67 +1,107 @@
-header{
-    background-image: url("../images/menu.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 50vh;
-}
-h1{
+/***********************************heading styles*/
+
+h1 {
     font-size: 4em;
     padding: 5%;
     text-align: center;
 }
-h2{
+
+h2 {
     font-size: 3em;
     text-align: center;
 }
-h3{
+
+h3 {
     font-size: 2em;
+    text-align: center;
 }
-h5{
+h4{
+    font-size: 1.25em;
+}
+
+h5 {
     text-align: center;
     font-size: 1em;
 }
-.loop-item{
+
+/**************************style for recipe cards*/
+
+.loop-item {
     display: inline-block;
     margin-bottom: 40px;
 }
-ul li{
+
+ul li {
     list-style: none;
 }
-.recipe_ingredient{
+
+.recipe_ingredient {
     padding-top: 0.5em;
 }
-.card{
+
+.card {
     height: 380px;
 }
+
 .card-img-top {
     height: 200px;
     margin: 0 auto;
 }
-.btn-primary{
+
+.btn-primary {
     width: 80%;
     margin: 0 10%;
 }
-img{
-    max-width:100%;
+
+/*************************style for select elements*/
+
+.form-inline .row {
+    margin: 0;
+    margin-bottom: 3em;
+    width: 100%;
+}
+
+.form-inline .form-control {
+    width: 100%;
     margin: 0 auto;
 }
-label{
+
+/*******Style for image on Display Recipe Page*/
+
+img {
+    width: 100%;
+    margin: 0 auto;
+}
+.recipe-info{
+    display: inline-block;
+    width: auto;
+    font-size: 1em;
+    margin: 3em 1em;
+    padding: 1em 1em;
+}
+/********************************Form styles*/
+
+label {
     font-size: 1em;
 }
-@media screen and (min-width: 768px){
-  .loop-item{
-    display: inline-block;
-    height: 360px;
-    max-width: 45%;
+
+/*****************************Media queries*/
+
+@media screen and (min-width: 768px) {
+    .loop-item {
+        display: inline-block;
+        height: 360px;
+        max-width: 45%;
+    }
 }
-}
-@media screen and (min-width: 992px){
-.loop-item{
-    display: inline-block;
-    height: 360px;
-    max-width: 33%;
-}
-label{
-    font-size: 1.5em;
-}
+
+@media screen and (min-width: 992px) {
+    .loop-item {
+        display: inline-block;
+        height: 360px;
+        max-width: 33%;
+    }
+    label {
+        font-size: 1.5em;
+    }
 }
