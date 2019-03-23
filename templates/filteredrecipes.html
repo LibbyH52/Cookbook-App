@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+ <div class="row">
+     {% for coursefilter in coursefilters %}
+         {% for cuisinefilter in coursefilters %}
+            {{coursefilter.recipe_name}}
+         {% endfor %}
+     {% endfor %}
+ </div>
+{% endblock %}
