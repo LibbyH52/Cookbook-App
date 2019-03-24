@@ -3,16 +3,16 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-10 col-lg-6">
+        <div class="col-sm-12 col-md-10">
             <h3>{{recipe.recipe_name}}</h3>
             <div class-"row">
-                <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <div class="col-sm-12 offset-md-1col-md-10">
                     <h4>author: {{recipe.author}}</h4>
                 </div>
-                <div class="col-sm-4 col-md-6 recipe-info">
+                <div class="col-sm-6 col-md-6 recipe-info">
                     type: {{recipe.course_name}}
                 </div>
-                <div class="col-sm-4 col-md-6 recipe-info">
+                <div class="col-sm-6 col-md-6 recipe-info">
                     cuisine: {{recipe.cuisine}}
                 </div>   
             </div>
@@ -23,12 +23,12 @@
                     <p>cook time: </p>
                     <p>total time: </p>
                 </div>-->
-            <div class="col-sm-12 col-md-10 col-lg-6">
+            <div class="col-sm-12 col-md-10 offset-lg-2 col-lg-8">
                 <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}"> 
             </div>
         </div>
           <div class="row">
-            <div class="col-sm-12 offset-md-3 col-md-6 col-lg-4">
+            <div class="col-sm-12 offset-md-3 col-md-6">
                 allergens:
                 {% for allergen in recipe.allergens %}
                     <strong>{{allergen}} </strong>
@@ -37,7 +37,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-sm-12 col-md-10 col-lg-8">
+            <div class="col-sm-12 offset-lg-2 col-lg-8">
                 <h4>Ingredients</h4>
                   <ul>
                        <!--iterates through theallergens array and displays one at a time-->
@@ -50,9 +50,17 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-12 col-md-10 col-lg-8">
+                <div class="col-sm-12 offset-lg-2 col-lg-8">
                     <h4>Preparation </h4>
                     {{recipe.Instructions}} 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                     <a href="" class="btn btn-primary">Edit Recipe</a>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                     <a href="" class="btn btn-primary">Delete Recipe</a>
                 </div>
             </div>
     </div>

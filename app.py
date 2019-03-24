@@ -22,15 +22,16 @@ def browse_recipes():
     courses = mongo.db.course.find()
     recipes = mongo.db.recipes.find()
     cuisine = mongo.db.cuisine.find()
-    return render_template('browserecipes.html', recipes=recipes, course=courses, cuisine=cuisine)
+    return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine)
 
 #returns recipes based on select options
-@app.route('/filter_recipes')
+@app.route('/filter_recipes', methods=["GET", "POST"])
 def filter_recipes():
-    coursefilters = mongo.db.recipes.find({ "course_name": 'Dessert'})
-    cuisinefilters = mongo.db.coursefilters.find({"cuisine" : "American"})
-    return render_template('filteredrecipes.html', coursefilters=coursefilters, cuisinefilters=cuisinefilters)
+    recipes = mongo.db.recipes.find({"course_name": request.form.get('course')})
+    return render_template('filteredrecipes.html', recipes=recipes)
     
+   # return("There are no recipes to show. Please widen your search filters!")
+   
 # retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):

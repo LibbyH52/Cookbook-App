@@ -5,7 +5,6 @@
 * As a user I want to visit this site so I can add and store my own recipes and keep them in one place.
 * As foodie I want to visit this site so that I can filter recipes based on different types of cuisine. 
 * As a keen baker I want to visit this site so that I can search for, store and edit various recipes.
- 
 
 #### Wireframes
 * Landing Page ![landingPage](static/wireframes/landingPage.png/)
@@ -58,4 +57,9 @@
     }
 
 
-
+## Deployment
+developed in cloud9
+created new git hub repository
+created new Heroku App, added IP address and PORT to config variables
+linked Herku with GitHub
+version control done using git
