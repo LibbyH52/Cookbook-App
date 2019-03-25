@@ -3,27 +3,30 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-10">
+        <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+            <h4>{{recipe.author}}'s</h4>
+        </div>
+        <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
             <h3>{{recipe.recipe_name}}</h3>
             <div class-"row">
-                <div class="col-sm-12 offset-md-1col-md-10">
-                    <h4>author: {{recipe.author}}</h4>
-                </div>
-                <div class="col-sm-6 col-md-6 recipe-info">
+                <div class="col-sm-8 offset-sm-2 recipe-info">
                     type: {{recipe.course_name}}
                 </div>
-                <div class="col-sm-6 col-md-6 recipe-info">
+                <div class="col-sm-8 offset-sm-2 recipe-info">
                     cuisine: {{recipe.cuisine}}
-                </div>   
+                </div> 
+                <div class="col-sm-8 offset-sm-2 recipe-info">
+                    cooktime: {{recipe.cooktime}}
+                </div> 
+                <div class="col-sm-8 offset-sm-2 recipe-info">
+                    preptime: {{recipe.preptime}}
+                </div> 
+                <div class="col-sm-8 offset-sm-2 recipe-info">
+                    serves: {{recipe.servings}}
+                </div>
             </div>
         </div>
-           
-                  <!--  <p>serves: {{recipe.servings}}</p>
-                    <p>prep time: </p>
-                    <p>cook time: </p>
-                    <p>total time: </p>
-                </div>-->
-            <div class="col-sm-12 col-md-10 offset-lg-2 col-lg-8">
+            <div class="col-sm-12 col-md-12 offset-lg-2 col-lg-8">
                 <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}"> 
             </div>
         </div>
@@ -57,10 +60,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                     <a href="" class="btn btn-primary">Edit Recipe</a>
+                     <a href="" class="btn">Edit Recipe</a>
                 </div>
                 <div class="col-sm-12 col-md-6">
-                     <a href="" class="btn btn-primary">Delete Recipe</a>
+                     <a href="" class="btn">Delete Recipe</a>
                 </div>
             </div>
     </div>
