@@ -18,10 +18,10 @@
                  <div class="col-sm-12 col-md-6 col-lg-4">
                    <div class="form-group">
                         <label for="course">Filter by cuisine: </label>
-                        <select class="form-control" id="course">
+                        <select name="cuisine" class="form-control" id="course">
                             <option selected>Please choose...</option>
                         {% for cuisine in cuisine %}
-                              <option value="{{cuisine.cuisine}}"> {{cuisine.cuisine}}</option>
+                              <option value="{{cuisine.cuisine_name}}"> {{cuisine.cuisine_name}}</option>
                          {% endfor %}
                     </select>
                    </div>

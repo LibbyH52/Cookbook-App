@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container recipe-container">
     <div class="row">
         <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
             <h4>{{recipe.author}}'s</h4>
@@ -39,9 +39,9 @@
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-sm-12 offset-lg-2 col-lg-8">
-                <h4>Ingredients</h4>
+        <div class="row recipe-row">
+            <div class="col-sm-12 col-lg-6">
+                <h4 class="recipe-heading">Ingredients</h4>
                   <ul>
                        <!--iterates through theallergens array and displays one at a time-->
                     {% for ingredient in recipe.ingredients %}
@@ -50,20 +50,19 @@
                     {% endfor %}
                     </ul>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-12 offset-lg-2 col-lg-8">
-                    <h4>Preparation </h4>
+                <hr>
+                <div class="col-sm-12 col-lg-6">
+                    <h4 class="recipe-heading">Preparation </h4>
                     {{recipe.Instructions}} 
                 </div>
             </div>
+            <hr>
             <div class="row">
-                <div class="col-sm-12 col-md-6">
-                     <a href="" class="btn">Edit Recipe</a>
+                <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
+                     <button class="btn btn-success">Edit Recipe</button>
                 </div>
-                <div class="col-sm-12 col-md-6">
-                     <a href="" class="btn">Delete Recipe</a>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                     <button class="btn btn-danger">Delete Recipe</button>
                 </div>
             </div>
     </div>
