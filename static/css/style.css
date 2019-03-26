@@ -57,14 +57,6 @@ h5 {
     margin-bottom: 40px;
 }
 
-ul li {
-    list-style: none;
-}
-
-.recipe_ingredient {
-    padding-top: 0.5em;
-}
-
 .card {
     height: 380px;
 }
@@ -74,9 +66,20 @@ ul li {
     margin: 0 auto;
 }
 
+.card-title{
+   font-family: 'Righteous', cursive;
+   font-size: 1.5em;
+   font-variant: small-caps;
+   font-weight: 800;
+}
+
 .btn-primary {
     margin: 0 10%;
     width: 80%;
+}
+
+.card-details{
+    text-align: center;
 }
 
 /*************************style for select elements*/
@@ -92,7 +95,7 @@ ul li {
     margin: 0 auto;
 }
 
-/*******Style for image on Display Recipe Page*/
+/*******************styles for Display Recipe Page*/
 .recipe-container{
     padding: 2em 0;
 }
@@ -100,12 +103,21 @@ img {
     margin: 2em auto 0 auto;
     width: 100%;
 }
+
 .recipe-info{
     font-size: 1em;
     text-align: center;
 }
 .recipe-row{
     padding-bottom: 2em;
+}
+
+.recipe_ingredient {
+    padding-top: 0.5em;
+}
+
+ul li {
+    list-style: none;
 }
 /********************************Form styles*/
 
