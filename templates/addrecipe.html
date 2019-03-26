@@ -2,72 +2,50 @@
 {% block content %}
 <div class="container">
   <h2>Add a recipe</h2>
-    <form>
+    <form action="" method="POST">
       <div class="form-row">
-        <div class="col-sm-12 col-md-12 col-lg-8">
+        <div class="col-sm-12 col-md-12 col-lg-6">
           <label for="recipe_name">Recipe Name: </label>
-          <input type="text" class="form-control" id="recipe_name" placeholder="Recipe Name">
+          <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name">
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4">
-          <label for="image_url">Upload a recipe image </label>
-          <input type="file" class="form-control" id="image_url">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+          <label for="basic-url">Recipe image URL</label>
+          <input type="text" class="form-control"name="image_url" id="image_url" aria-describedby="basic-addon3" placeholder="https://recipes.com/image/">
         </div>
       </div>
       <div class="form-group">
           <label for="course_name">Course Name</label>
-          <select class="form-control" id="course_name">
-            <option>Choose... </option>
-            <option>Starter or Appetiser</option>
-            <option>Main</option>
-            <option>Dessert</option>
+          <select class="form-control" name="course_name" id="course_name">
+                <option selected>Please choose...</option>
+                {% for course in courses %}
+                    <option value="{{course.course_name}}"> {{course.course_name}}</option>
+                {% endfor %}
           </select>
         </div>
       <div class="form-group">
             <label for="cuisine">Cuisine Type</label>
-            <select class="form-control" id="cuisine">
-                <option>Choose...</option>
-                <option>American</option>
-                <option>Caribbean </option>
-                <option>Chinese </option>
-                <option>Italian</option>
-                <option>Japanese</option>
-                <option>Turkish and Middle Eastern</option>
-            </select>
+          <select class="form-control" name="course_name" id="course_name">
+                <option selected>Please choose...</option>
+                {% for cuisine in cuisine %}
+                    <option value="{{cuisine.cuisine_name}}"> {{cuisine.cuisine_name}}</option>
+                {% endfor %}
+          </select>
         </div>
       <div class="form-group">
           <label class="form-label" for="Serving Size">Number of Servings</label>
-          <input type="number" min="1" class="form-control" id="Servings">
+          <input type="number" min="1" class="form-control" name="servings" id="servings">
       </div>
       <div class="form-group">
-          <label for="allergens">Allergens </label><br>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="eggs">
-              <label class="form-check-label" for="eggs">Eggs</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="fish" value="fish">
-              <label class="form-check-label" for="fish">Fish</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="milk" value="milk">
-              <label class="form-check-label" for="milk">Milk</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="nuts" value="nuts">
-              <label class="form-check-label" for="nuts">Nuts</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="shellfish" value="shellfish">
-              <label class="form-check-label" for="shellfish">Shellfish</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="soy" value="soy">
-              <label class="form-check-label" for="soy">Soy</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="wheat & gluten" value="wheat & gluten">
-              <label class="form-check-label" for="wheat & gluten">Wheat & Gluten</label>
-          </div>
+          <label for="allergens">Allergens </label>
+            {% for allergen in allergens %}
+            <div class="form-check-inline">
+              <input class="form-check-input" type="checkbox" value="" name="{{allergen.allergen_name}}" id="{{allergen.allergen_name}}">
+              <label class="form-check-label" for="{{allergen.allergen_name}}">
+                    {{allergen.allergen_name}}
+              </label>
+            </div>
+            {% endfor %}
+        
       </div>
       <div class="form-group">
         <label for="ingredients">Recipe Ingredients</label>
@@ -75,7 +53,7 @@
     </div>
     <div class="form-group">
         <label for="instructions">Recipe Instructions </label>
-        <textarea class="form-control" id="ingredients" rows="8"></textarea>
+        <textarea class="form-control" name="instructions" id="instructions" rows="8"></textarea>
     </div>
   </form>
 </div>

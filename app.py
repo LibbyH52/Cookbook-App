@@ -21,17 +21,16 @@ mongo = PyMongo(app)
 def browse_recipes():
     cuisine = mongo.db.cuisine.find()
     courses = mongo.db.course.find()
+    allergens = mongo.db.allergens.find()
     if request.method == "POST":
         course = request.form.get('course')
         recipes = mongo.db.recipes.find({"course_name": course})
         return render_template('browserecipes.html', recipes=recipes, course=course)
     else:
         recipes = mongo.db.recipes.find()
-        return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine)
+        return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine, allergens=allergens)
 
 
-
-   
 # retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
@@ -40,7 +39,8 @@ def display_recipe(recipe_id):
 # displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html')        
+    return render_template('addrecipe.html', courses=mongo.db.course.find(), 
+                        cuisine=mongo.db.cuisine.find(), allergens=mongo.db.allergens.find())        
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),
