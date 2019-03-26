@@ -11,9 +11,19 @@ header{
 /****************************************nav styles*/
 .navbar .navbar-brand{
     color: #ffffff;
+    font-size: 1.5em;
+}
+.navbar .navbar-brand:hover{
+    color: #ffffff;
+    font-weight: 800;
 }
 .navbar-nav .nav-item .nav-link{
     color: #ffffff;
+    font-size: 1.5em;
+}
+.navbar-nav .nav-item .nav-link:hover{
+    color: #ffffff;
+    font-weight: 800;
 }
 /***********************************heading styles*/
 
@@ -28,7 +38,10 @@ h1 {
 }
 
 h2 {
+    color: #003f5c;
+    font-family: 'Righteous', cursive;
     font-size: 3em;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -55,10 +68,18 @@ h5 {
 .loop-item {
     display: inline-block;
     margin-bottom: 40px;
+    min-height: 400px;
 }
-
+.loop-item a{
+    
+}
+.loop-item a:hover{
+    text-decoration: none;
+}
 .card {
-    height: 380px;
+    color: #444e86;
+    margin-top: 20px;
+    min-height: 400px;
 }
 
 .card-img-top {
@@ -93,6 +114,10 @@ h5 {
 .form-inline .form-control {
     width: 100%;
     margin: 0 auto;
+}
+
+label{
+    color: #ffa600;
 }
 
 /*******************styles for Display Recipe Page*/
