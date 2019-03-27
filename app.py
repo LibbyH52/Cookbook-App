@@ -25,7 +25,6 @@ def browse_recipes():
     if request.method == "POST":
         course = request.form.get('course')
         cuisine = request.form.get('cuisine')
-        #recipes = mongo.db.recipes.find({"course_name": course})
         recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }  ]} }])
         return render_template('browserecipes.html', recipes=recipes, course=course, cuisine=cuisine)
     else:
@@ -43,6 +42,14 @@ def display_recipe(recipe_id):
 def add_recipe():
     return render_template('addrecipe.html', courses=mongo.db.course.find(), 
                         cuisine=mongo.db.cuisine.find(), allergens=mongo.db.allergens.find())        
+
+@app.route('/insert_recipe', methods=["GET", "POST"])
+def insert_recipe():
+    #get recipe collection
+    recipes = mongo.db.recipes
+    #then do a recipe insert and convert form to a dictionary, so can be understood by Mongodb
+    recipes.insert_one(request.form.to_dict())
+    return redirect(url_for('browse_recipes'))
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),
