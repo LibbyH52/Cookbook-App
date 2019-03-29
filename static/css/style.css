@@ -63,6 +63,41 @@ h5 {
     text-transform: uppercase;
 }
 
+/***********************************button styles*/
+
+.btn-primary {
+    margin: 1em 2em;
+    width: 80%;
+}
+
+.btn.btn-primary.btn-sm.filter-btn {
+    background-color: #2f4b7c;
+    height: 80%;
+    margin: 5% 10%;
+    width: 30%;
+}
+
+.btn-edit{
+    background-color: #f95d6a;
+    border: 1px solid #f95d6a;
+    width: 60%;
+}
+
+.btn-edit:hover{
+    background-color: #f95d6a;
+    border: 1px solid #f95d6a;
+}
+
+.btn-delete{
+    background-color: #ff7c43;
+    border: 1px solid #ff7c43;
+}
+
+.btn-delete:hover{
+    background-color: #ff7c43;
+    border: 1px solid #ff7c43;
+}
+
 /**************************style for recipe cards*/
 
 .loop-item {
@@ -92,11 +127,6 @@ h5 {
    font-size: 1.5em;
    font-variant: small-caps;
    font-weight: 800;
-}
-
-.btn-primary {
-    margin: 1em 2em;
-    width: 80%;
 }
 
 .card-details{
@@ -145,25 +175,6 @@ ul li {
     list-style: none;
 }
 
-.btn-edit{
-    background-color: #ffa600;
-    border: 1px solid #ffa600;
-}
-
-.btn-edit:hover{
-    background-color: #ffa600;
-    border: 1px solid #ffa600;
-}
-
-.btn-delete{
-    background-color: #ff7c43;
-    border: 1px solid #ff7c43;
-}
-
-.btn-delete:hover{
-    background-color: #ff7c43;
-    border: 1px solid #ff7c43;
-}
 /********************************Form styles*/
 
 label {
