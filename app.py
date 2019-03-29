@@ -46,6 +46,29 @@ def edit_recipe(recipe_id):
     courses = mongo.db.course.find()
     #allergens = mongo.db.allergens.find()
     return render_template("editrecipe.html", recipe=recipe, courses=courses, cuisine=cuisine)
+
+#updates the database with edited recipe
+@app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    #access recipes collection and call the update function
+    recipes.update({'_id':ObjectId(recipe_id)},
+        #match form fields to keys in the recipes collection
+        {
+            'recipe_name': request.form.get('recipe_name'),
+            'image_url' :request.form.get('image_url'),
+            'author' :request.form.get('author'),
+            'course_name': request.form.get('course_name'),
+            'cuisine_name': request.form.get('cuisine_name'),
+            'servings':request.form.get('servings'),
+            'prep_time':request.form.get('prep_time'),
+            'cook_time':request.form.get('cook_time'),
+            'allergens':request.form.get('allergen_name'),
+            'ingredients':request.form.get('ingredients'),
+            'Instructions':request.form.get('Instructions')
+        })
+    return redirect(url_for('browse_recipes'))
+    
     
 # displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
