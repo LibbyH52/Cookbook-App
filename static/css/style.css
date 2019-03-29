@@ -95,7 +95,7 @@ h5 {
 }
 
 .btn-primary {
-    margin: 0 10%;
+    margin: 1em 2em;
     width: 80%;
 }
 
@@ -143,6 +143,26 @@ img {
 
 ul li {
     list-style: none;
+}
+
+.btn-edit{
+    background-color: #ffa600;
+    border: 1px solid #ffa600;
+}
+
+.btn-edit:hover{
+    background-color: #ffa600;
+    border: 1px solid #ffa600;
+}
+
+.btn-delete{
+    background-color: #ff7c43;
+    border: 1px solid #ff7c43;
+}
+
+.btn-delete:hover{
+    background-color: #ff7c43;
+    border: 1px solid #ff7c43;
 }
 /********************************Form styles*/
 
