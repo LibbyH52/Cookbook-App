@@ -2,7 +2,7 @@ import pymongo
 import os
 from flask import Flask, render_template, redirect, request, url_for #check meaning
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
+from bson.objectid import ObjectId #converts id passed from temlate in a form that's readable by Mongodb
 import config
 
 app = Flask(__name__)
@@ -35,6 +35,16 @@ def browse_recipes():
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
     return render_template('displayrecipe.html', recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
+
+#selects a recipe and retreives from the database using its id and displays it in a form to allow the user to edit its properties
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    #get the recipe that matches the recipe id '_id' is the key 
+    recipe = mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
+    #list of collections to populate form for editing
+    cuisine = mongo.db.cuisine.find()
+    courses = mongo.db.course.find()
+    allergens = mongo.db.allergens.find()
     
 # displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
