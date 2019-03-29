@@ -40,11 +40,12 @@ def display_recipe(recipe_id):
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     #get the recipe that matches the recipe id '_id' is the key 
-    recipe = mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
+    recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
     #list of collections to populate form for editing
     cuisine = mongo.db.cuisine.find()
     courses = mongo.db.course.find()
-    allergens = mongo.db.allergens.find()
+    #allergens = mongo.db.allergens.find()
+    return render_template("editrecipe.html", recipe=recipe, courses=courses, cuisine=cuisine)
     
 # displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
