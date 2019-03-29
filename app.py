@@ -63,8 +63,8 @@ def update_recipe(recipe_id):
             'servings':request.form.get('servings'),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
-            'allergens':request.form.get('allergen_name'),
-            'ingredients':request.form.get('ingredients'),
+            'allergens':request.form.getlist('allergen_name'),
+            'ingredients':request.form.getlist('ingredients'),
             'Instructions':request.form.get('Instructions')
         })
     return redirect(url_for('browse_recipes'))
