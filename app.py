@@ -23,14 +23,13 @@ def browse_recipes():
     courses = mongo.db.course.find()
     allergens = mongo.db.allergens.find()
     if request.method == "POST":
-        course = request.form.get('course')
+        course = request.form.get("course")
         cuisine = request.form.get('cuisine')
         recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }  ]} }])
-        return render_template('browserecipes.html', recipes=recipes, course=course, cuisine=cuisine)
+        return render_template('browserecipes.html', recipes=recipes)
     else:
         recipes = mongo.db.recipes.find()
         return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine)
-
 
 # retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
 @app.route('/display_recipe/<recipe_id>')
