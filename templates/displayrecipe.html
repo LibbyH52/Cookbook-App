@@ -32,7 +32,7 @@
         <div class="col-sm-12 offset-lg-2 col-lg-8">
             allergens:
             {% for allergen in recipe.allergens %}
-                <strong>{{allergen}} </strong>
+                <strong>{{allergen.allergen_name}}, </strong>
             {% endfor %} 
         </div>
     </div>
