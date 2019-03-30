@@ -25,11 +25,14 @@ def browse_recipes():
     if request.method == "POST":
         course = request.form.get("course")
         cuisine = request.form.get('cuisine')
-        recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }  ]} }])
+        allergens = request.form.getlist("allergen")
+        
+        recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine } ]} }])
+            
         return render_template('browserecipes.html', recipes=recipes)
     else:
         recipes = mongo.db.recipes.find()
-        return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine)
+        return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine, allergens=allergens)
 
 # retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
 @app.route('/display_recipe/<recipe_id>')
@@ -63,7 +66,7 @@ def update_recipe(recipe_id):
             'servings':request.form.get('servings'),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
-            'allergens':request.form.getlist('allergen_name'),
+            'allergens':request.form.getlist('allergen[]'),
             'ingredients':request.form.getlist('ingredients'),
             'Instructions':request.form.get('Instructions')
         })
@@ -83,6 +86,16 @@ def insert_recipe():
     #then do a recipe insert and convert form to a dictionary, so can be understood by Mongodb
     recipes.insert_one(request.form.to_dict())
     return redirect(url_for('browse_recipes'))
+    
+@app.route('/insert_course', methods=["GET", "POST"])
+def insert_course():
+    courses = mongo.db.course
+    courses.insert_one({"course_name":request.form.get('course').title()})
+    return render_template('addrecipe.html')  
+
+@app.route('/add_course')
+def add_course():
+    return render_template('addcourse.html') 
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),
