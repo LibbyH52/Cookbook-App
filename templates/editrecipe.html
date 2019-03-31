@@ -36,36 +36,18 @@
       <div class="form-row">
         <div class="col-sm-12 col-md-6">
           <label for="course_name">Course Name: </label>
-          <select class="form-control" name="course_name" id="course_name">
-                <option selected>Please choose...</option>
-                {% for course in courses %}
-                     {% if course.course_name == recipe.course_name %}
-                        <option value="{{course.course_name}}" selected> {{course.course_name}}</option>
-                    {% else %}
-                        <option value="{{course.course_name}}"> {{course.course_name}}</option>
-                    {% endif %}
-                {% endfor %}
-          </select>
+          <input type="text" class="form-control" name="course" id="course" placeholder="{{recipe.course_name}}" value="{{recipe.course_name}}">
         </div>
         <div class="col-sm-12 col-md-6">
           <label for="cuisine">Cuisine Type: </label>
-          <select class="form-control" name="cuisine_name" id="cuisine_name">
-                <option selected>Please choose...</option>
-                {% for cuisine in cuisine %}
-                    {% if cuisine.cuisine_name == recipe.cuisine_name %}
-                        <option value="{{cuisine.cuisine_name}}" selected> {{cuisine.cuisine_name}}</option>
-                    {% else  %}
-                        <option value="{{cuisine.cuisine_name}}"> {{cuisine.cuisine_name}}</option>
-                    {% endif %}
-                {% endfor %}
-          </select>
-      </div>
+          <input type="text" class="form-control" name="cuisine" id="cuisine" placeholder="{{recipe.cuisine_name}}" value="{{recipe.cuisine_name}}">
+        </div>
       </div>
       <div class="form-group">
           <label for="allergens">Allergens: </label>
             {% for allergen in allergens %}
             <div class="form-check-inline">
-              <input class="form-check-input" type="checkbox" value="" name="allergen_name" id="allergen_name">
+              <input class="form-check-input" type="checkbox" value="" name="allergen[]" id="allergen_name">
               <label class="form-check-label" for="{{allergen.allergen_name}}">
                     {{allergen.allergen_name}}
               </label>
