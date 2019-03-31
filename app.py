@@ -86,11 +86,20 @@ def insert_recipe():
     #then do a recipe insert and convert form to a dictionary, so can be understood by Mongodb
     recipes.insert_one(request.form.to_dict())
     course_name=request.form.get('course_name')
-    courses = mongo.db.course
-    courses.insert_one({"course_name":course_name})
+   # courses = mongo.db.course
+    course = mongo.db.course.update(
+        {"course_name": course_name},
+        { "$setOnInsert": { "course_name": course_name },
+        },
+        upsert= True 
+        ); 
     cuisine_name=request.form.get('cuisine_name')
-    cuisines = mongo.db.cuisine
-    cuisines.insert_one({"cuisine_name":cuisine_name})
+    cuisine = mongo.db.cuisine.update(
+        {"cuisine_name": cuisine_name},
+        { "$setOnInsert": { "cuisine_name": cuisine_name },
+        },
+        upsert= True 
+        ); 
     return redirect(url_for('browse_recipes'))
     
 @app.route('/insert_course', methods=["GET", "POST"])
