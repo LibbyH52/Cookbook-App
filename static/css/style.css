@@ -59,7 +59,8 @@ h5 {
     text-align: center;
 }
 .recipe-heading{
-    font-size: 1.5em;
+    color: #444e86;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
@@ -77,6 +78,15 @@ h5 {
     width: 30%;
 }
 
+.btn.btn-outline-primary.back-btn{
+    border: 1px solid #665191;
+}
+
+.btn.btn-outline-primary.back-btn:hover{
+    background-color: #ffffff;
+    border: 1px solid #665191;
+}
+
 .btn-edit{
     background-color: #f95d6a;
     border: 1px solid #f95d6a;
@@ -91,6 +101,7 @@ h5 {
 .btn-delete{
     background-color: #ff7c43;
     border: 1px solid #ff7c43;
+    width: 60%;
 }
 
 .btn-delete:hover{
@@ -159,8 +170,13 @@ img {
     width: 100%;
 }
 
+.details-col{
+    padding: 2em 1em;
+}
+
 .recipe-info{
-    font-size: 1em;
+    color: #dd5182;
+    font-size: 1.5em;
     text-align: center;
 }
 .recipe-row{
@@ -213,9 +229,4 @@ label {
     label {
         font-size: 1.5em;
     }
-   /* .recipe-info{
-        font-size: 1.5em;
-        margin: 1em 0.5em;
-        padding: 1em 1em;
-    }*/
 }
