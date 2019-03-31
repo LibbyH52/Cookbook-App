@@ -23,19 +23,20 @@ def browse_recipes():
     cuisine = mongo.db.cuisine.find()
     courses = mongo.db.course.find()
     allergens = mongo.db.allergens.find()
+    recipe_allergens=mongo.db.recipe.allergens.find()
     if request.method == "POST":
         course = request.form.get("course")
         cuisine = request.form.get('cuisine')
         allergens = request.form.getlist("allergen")
         
-        recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine } ]} }])
+        filter_recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }]} }])
             
-        return render_template('browserecipes.html', recipes=recipes)
+        return render_template('browserecipes.html', recipes=filter_recipes)
     else:
         recipes = mongo.db.recipes.find()
         return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine, allergens=allergens)
 
-# retrieves full recipe from database when a user clicks on'View Recipe' button in the 'Browse Recipes' page
+# retrieves full recipe from database when a user clicks on'View Recipe' button
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
     return render_template('displayrecipe.html', recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
@@ -45,10 +46,6 @@ def display_recipe(recipe_id):
 def edit_recipe(recipe_id):
     #get the recipe that matches the recipe id '_id' is the key 
     recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
-    #list of collections to populate form for editing
-    #cuisine = mongo.db.cuisine.find()
-    #courses = mongo.db.course.find()
-    #allergens = mongo.db.allergens.find()
     return render_template("editrecipe.html", recipe=recipe)
 
 #updates the database with edited recipe
@@ -62,8 +59,8 @@ def update_recipe(recipe_id):
             'recipe_name': request.form.get('recipe_name'),
             'image_url' :request.form.get('image_url'),
             'author' :request.form.get('author'),
-            'course_name': course_name,
-            'cuisine_name': request.form.get('cuisine'),
+            'course_name': request.form.get('course_name'),
+            'cuisine_name': request.form.get('cuisine_name'),
             'servings':request.form.get('servings'),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
@@ -86,7 +83,7 @@ def insert_recipe():
     #then do a recipe insert and convert form to a dictionary, so can be understood by Mongodb
     recipes.insert_one(request.form.to_dict())
     course_name=request.form.get('course_name')
-   # courses = mongo.db.course
+   # adds new course and cuisine names, if not already there
     course = mongo.db.course.update(
         {"course_name": course_name},
         { "$setOnInsert": { "course_name": course_name },
@@ -102,15 +99,11 @@ def insert_recipe():
         ); 
     return redirect(url_for('browse_recipes'))
     
-@app.route('/insert_course', methods=["GET", "POST"])
-def insert_course():
-    courses = mongo.db.course
-    courses.insert_one({"course_name":request.form.get('course').title()})
-    return render_template('addrecipe.html')  
-
-@app.route('/add_course')
-def add_course():
-    return render_template('addcourse.html') 
+#deletes a recipe
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+    return redirect(url_for('browse_recipes'))
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),

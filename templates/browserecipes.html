@@ -8,7 +8,7 @@
                    <div class="form-group">
                         <label for="course">Filter by course: </label>
                         <select class="form-control" name="course" id="course">
-                            <option selected>Please choose...</option>
+                            <option disabled selected>Please choose...</option>
                         {% for course in courses %}
                           <option value="{{course.course_name}}"> {{course.course_name}}</option>
                         {% endfor %}
@@ -19,15 +19,31 @@
                    <div class="form-group">
                         <label for="cuisine">Filter by cuisine: </label>
                         <select class="form-control" name="cuisine" id="cuisine">
-                            <option selected>Please choose...</option>
+                            <option disabled selected>Please choose...</option>
                             {% for cuisine in cuisine %}
                                   <option value="{{cuisine.cuisine_name}}"> {{cuisine.cuisine_name}}</option>
                             {% endfor %}
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <button class="btn btn-primary btn-sm" type="Submit">Submit</button> 
+                 <div class="col-sm-12 col-md-6 col-lg-4">
+                   <div class="form-group">
+                     <label for="cuisine">Exclude allergens: </label>
+                     <select multiple class="form-control" name="allergen" id="allergen">
+                            <option disabled selected>Please choose...</option>
+                            {% for allergen in allergens %}
+                                <option  value="{{allergen.allergen_name}}"> {{allergen.allergen_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                 <div class="col-sm-6 col-md-6 col-lg-6">
+                    <button class="btn btn-primary btn-sm" type="Submit">Filter Recipes</button> 
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{url_for('browse_recipes', recipes=all_recipes)}}" class="btn btn-primary btn-sm">Reset Filters</a>
                 </div>
             </div>
         </form>
