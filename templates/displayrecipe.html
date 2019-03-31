@@ -3,6 +3,11 @@
 {% block content %}
 <div class="container recipe-container">
     <div class="row">
+        <div class="col-sm-12 col-d-6">
+            <a class="btn btn-primary" onclick="history.go(-1)">Go back to search results</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
             <h4>{{recipe.author}}'s</h4>
             <h3>{{recipe.recipe_name}}</h3>
@@ -32,7 +37,7 @@
         <div class="col-sm-12 offset-lg-2 col-lg-8">
             allergens:
             {% for allergen in recipe.allergens %}
-                <strong>{{allergen.allergen_name}}, </strong>
+                <strong>{{allergen}}, </strong>
             {% endfor %} 
         </div>
     </div>
