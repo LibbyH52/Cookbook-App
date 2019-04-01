@@ -44,16 +44,15 @@
         </div>
       </div>
       <div class="form-group">
-          <label for="allergens">Allergens: </label>
-            {% for allergen in allergens %}
-            <div class="form-check-inline">
-              <input class="form-check-input" type="checkbox" value="" name="allergen_name" id="allergen_name">
-              <label class="form-check-label" for="{{allergen.allergen_name}}">
-                    {{allergen.allergen_name}}
-              </label>
-            </div>
-            {% endfor %}
-        
+             <div class="col-sm-12 col-md-6 col-lg-4">
+                     <label for="allergen">Allergens: </label>
+                        {% for allergen in allergens %}
+                            <div class="form-check-inline">
+                          <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen-{{loop.index}}" id="allergen_name">
+                          <label class="form-check-label" for="{{allergen.allergen_name}}">  {{allergen.allergen_name}}</label>
+                    </div>
+                {% endfor %}
+          </div>
       </div>
       <div class="form-group">
         <label for="ingredients">Ingredients: </label>
