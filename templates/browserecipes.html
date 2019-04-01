@@ -26,17 +26,17 @@
                         </select>
                     </div>
                 </div>
-                 <div class="col-sm-12 col-md-6 col-lg-4">
-                   <div class="form-group">
-                     <label for="cuisine">Exclude allergens: </label>
-                     <select multiple class="form-control" name="allergen" id="allergen">
-                            <option disabled selected>Please choose...</option>
-                            {% for allergen in allergens %}
-                                <option  value="{{allergen.allergen_name}}"> {{allergen.allergen_name}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                     <label for="allergen">Exclude allergens: </label>
+                        {% for allergen in allergens %}
+                            <div class="form-check-inline">
+                              <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen-{{loop.index}}" id="allergen_name">
+                              <label class="form-check-label" for="{{allergen.allergen_name}}">  {{allergen.allergen_name}}
+                                </label>
+                        </div>
+                    {% endfor %}
                 </div>
+            </div>
             </div>
             <div class="form-row">
                  <div class="col-sm-6 col-md-6 col-lg-6">
