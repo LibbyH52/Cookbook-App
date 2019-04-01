@@ -25,12 +25,13 @@ def browse_recipes():
     allergens = mongo.db.allergens.find()
     recipe_allergens=mongo.db.recipe.allergens.find()
     if request.method == "POST":
-        form = request.form.to_dict()
         course = request.form.get("course")
         cuisine = request.form.get('cuisine')
+       
+        form = request.form.to_dict()
         allergens=list()
         for key in form:
-            if key == "course" or key=="cusine":
+            if key == "course" or key == "cuisine":
                 continue
             else:
                 value_key = key
@@ -38,9 +39,8 @@ def browse_recipes():
                 key = key[0]
                 allergens.append(form[value_key])
         print(allergens)
-     
-        filter_recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }]} }])
-        print(filter_recipes)   
+    
+        filter_recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }}]}}])
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:
         recipes = mongo.db.recipes.find()
@@ -74,7 +74,7 @@ def update_recipe(recipe_id):
             'servings':request.form.get('servings'),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
-            'allergens':request.form.getlist('allergen[]'),
+            'allergens':request.form.getlist('allergen'),
             'ingredients':request.form.getlist('ingredients'),
             'Instructions':request.form.get('Instructions')
         })
@@ -91,7 +91,22 @@ def insert_recipe():
     #get recipe collection
     recipes = mongo.db.recipes
     #then do a recipe insert and convert form to a dictionary, so can be understood by Mongodb
-    recipes.insert_one(request.form.to_dict())
+    recipes.insert_one(  {
+            'recipe_name': request.form.get('recipe_name'),
+            'image_url' :request.form.get('image_url'),
+            'author' :request.form.get('author'),
+            'course_name': request.form.get('course_name'),
+            'cuisine_name': request.form.get('cuisine_name'),
+            'servings':request.form.get('servings'),
+            'prep_time':request.form.get('prep_time'),
+            'cook_time':request.form.get('cook_time'),
+            'allergens':[request.form.getlist('allergen_name')],
+            'ingredients':[request.form.getlist('ingredients')],
+            'Instructions':request.form.get('Instructions')
+        })
+    
+    
+    
     course_name=request.form.get('course_name')
    # adds new course and cuisine names, if not already there
     course = mongo.db.course.update(
