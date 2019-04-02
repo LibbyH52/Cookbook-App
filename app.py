@@ -107,8 +107,8 @@ def insert_recipe():
             'servings':request.form.get('servings'),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
-            'allergens':[request.form.getlist('allergen')],
-            'ingredients':[request.form.getlist('ingredients')],
+            'allergens':request.form.getlist('allergen'),
+            'ingredients':request.form.getlist('ingredients'),
             'Instructions':request.form.get('Instructions')
         })
     
