@@ -30,17 +30,24 @@ def browse_recipes():
        
         form = request.form.to_dict()
         allergens=list()
+        filters=list()
         for key in form:
             if key == "course" or key == "cuisine":
-                continue
-            else:
                 value_key = key
                 key = key.split("-")
                 key = key[0]
                 allergens.append(form[value_key])
         print(allergens)
-    
-        filter_recipes= mongo.db.recipes.aggregate([{"$match" :{"$and": [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }}]}}])
+        
+        filter_recipes= mongo.db.recipes.aggregate([{"$match":
+                {"$or": 
+                    [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergen" : { "$nin": allergens }
+                        
+                    }
+                    ]}
+            }])
+        
+        print(filter_recipes)
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:
         recipes = mongo.db.recipes.find()
@@ -100,7 +107,7 @@ def insert_recipe():
             'servings':request.form.get('servings'),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
-            'allergens':[request.form.getlist('allergen_name')],
+            'allergens':[request.form.getlist('allergen')],
             'ingredients':[request.form.getlist('ingredients')],
             'Instructions':request.form.get('Instructions')
         })
