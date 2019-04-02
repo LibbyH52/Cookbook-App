@@ -6,41 +6,41 @@
       <div class="form-row">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <label for="recipe_name">Recipe Name: </label>
-          <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name">
+          <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-sm-12 col-md-12 col-lg-6">
           <label for="basic-url">Recipe image URL:</label>
-          <input type="text" class="form-control" name="image_url" id="image_url" aria-describedby="basic-addon3" placeholder="https://recipes.com/image/">
+          <input type="text" class="form-control" name="image_url" id="image_url" aria-describedby="basic-addon3" placeholder="https://recipes.com/image/" required>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
           <label for="author">Recipe Author: </label>
-          <input type="text" class="form-control" name="author" id="author" placeholder="Recipe Author">
+          <input type="text" class="form-control" name="author" id="author" placeholder="Recipe Author" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-sm-12 col-md-6 col-lg-4">
           <label for="author">Prep Time: </label>
-          <input type="text" class="form-control" name="prep_time" id="prep_time" placeholder="30mins-1hour">
+          <input type="text" class="form-control" name="prep_time" id="prep_time" placeholder="30mins-1hour" required>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4">
           <label for="author">Cook Time: </label>
-          <input type="text" class="form-control" name="cook_time" id="cook_time" placeholder="1-2 hours">
+          <input type="text" class="form-control" name="cook_time" id="cook_time" placeholder="1-2 hours" required>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4">
           <label class="form-label" for="Serving Size">Servings: </label>
-          <input type="number" min="1" class="form-control" name="servings" id="servings">
+          <input type="number" min="1" class="form-control" name="servings" id="servings" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-sm-12 col-md-12 col-lg-6">
           <label for="course_name">Course Name: </label>
-          <input type="text" class="form-control" name="course_name" id="course_name" placeholder="Course Name">
+          <input type="text" class="form-control" name="course_name" id="course_name" placeholder="Course Name" required>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
           <label for="basic-url">Cuisine Name:</label>
-          <input type="text" class="form-control"name="cuisine_name" id="cuisine_name" placeholder="Cuisine Name">
+          <input type="text" class="form-control"name="cuisine_name" id="cuisine_name" placeholder="Cuisine Name" required>
         </div>
       </div>
       <div class="form-group">
@@ -54,21 +54,31 @@
                 {% endfor %}
           </div>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="ingredients-row">
         <label for="ingredients">Ingredients: </label>
-        <input type="text" class="form-control" name="ingredients" id="cook_time" placeholder="20g plain flour sieved">
-        <input type="text" class="form-control" name="ingredients" id="cook_time" placeholder="20g plain flour sieved">
-        <input type="text" class="form-control" name="ingredients" id="cook_time" placeholder="20g plain flour sieved">
-        <input type="text" class="form-control" name="ingredients" id="cook_time" placeholder="20g plain flour sieved">
-        <input type="text" class="form-control" name="ingredients" id="cook_time" placeholder="20g plain flour sieved">
-        <input type="text" class="form-control" name="ingredients" id="cook_time" placeholder="20g plain flour sieved">
+        <input type="text" class="form-control" name="ingredients" id="ingredient" placeholder="20g plain flour sieved" required/>
+        <input type="text" class="form-control" name="ingredients" id="ingredient" placeholder="20g plain flour sieved" required/>
+        <input type="text" class="form-control" name="ingredients" id="ingredient" placeholder="20g plain flour sieved" required/>
+        <input type="text" class="form-control" name="ingredients" id="ingredient" placeholder="20g plain flour sieved" required/>
+        <button type="button" class="new-input-btn">Add More Ingredients</button>
     </div>
     <div class="form-group">
         <label for="instructions">Instructions: </label>
-        <textarea class="form-control" name="Instructions" id="instructions" rows="8"></textarea>
+        <textarea class="form-control" name="Instructions" id="instructions" rows="8" required></textarea>
     </div>
     <button class="btn btn-primary btn-sm" type="submit" name="action">Add Recipe</button>
   </form>
 </div>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"                                                          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
+<script>
+    $(document).ready(function(){
+      $(".new-input-btn").on('click', function(){
+        $('<input type="text" class="form-control" name="ingredients" id="ingredient" placeholder="20g plain flour sieved" required >').insertBefore(".new-input-btn");
+      });
+   });
+</script>
+ 
+
+
 
 {% endblock %}

@@ -27,24 +27,23 @@ def browse_recipes():
     if request.method == "POST":
         course = request.form.get("course")
         cuisine = request.form.get('cuisine')
-       
-        form = request.form.to_dict()
-        allergens=list()
-        filters=list()
-        for key in form:
-            if key == "course" or key == "cuisine":
-                value_key = key
-                key = key.split("-")
-                key = key[0]
-                allergens.append(form[value_key])
+        allergens=request.form.getlist("allergen")
+        #form = request.form.to_dict()
+        #allergens=list()
+        #filters=list()
+        #for key in form:
+         #   if key == "course" or key == "cuisine":
+          #      value_key = key
+           #     key = key.split("-")
+            #    key = key[0]
+             #   allergens.append(form[value_key])
         print(allergens)
         
         filter_recipes= mongo.db.recipes.aggregate([{"$match":
                 {"$or": 
                     [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergen" : { "$nin": allergens }
-                        
                     }
-                    ]}
+                ]}
             }])
         
         print(filter_recipes)
@@ -73,17 +72,17 @@ def update_recipe(recipe_id):
     recipes.update({'_id':ObjectId(recipe_id)},
         #match form fields to keys in the recipes collection
         {
-            'recipe_name': request.form.get('recipe_name'),
-            'image_url' :request.form.get('image_url'),
-            'author' :request.form.get('author'),
-            'course_name': request.form.get('course_name'),
-            'cuisine_name': request.form.get('cuisine_name'),
-            'servings':request.form.get('servings'),
-            'prep_time':request.form.get('prep_time'),
-            'cook_time':request.form.get('cook_time'),
-            'allergens':request.form.getlist('allergen'),
-            'ingredients':request.form.getlist('ingredients'),
-            'Instructions':request.form.get('Instructions')
+            'recipe_name': request.form.get('recipe_name').title(),
+            'image_url' :request.form.get('image_url').title(),
+            'author' :request.form.get('author').title(),
+            'course_name': request.form.get('course_name').title(),
+            'cuisine_name': request.form.get('cuisine_name').title(),
+            'servings':request.form.get('servings').title(),
+            'prep_time':request.form.get('prep_time').title(),
+            'cook_time':request.form.get('cook_time').title(),
+            'allergens':request.form.getlist('allergen').title(),
+            'ingredients':request.form.getlist('ingredient').title(),
+            'Instructions':request.form.get('Instructions').title()
         })
     return redirect(url_for('browse_recipes'))
     
@@ -116,19 +115,21 @@ def insert_recipe():
     
     course_name=request.form.get('course_name')
    # adds new course and cuisine names, if not already there
-    course = mongo.db.course.update(
-        {"course_name": course_name},
-        { "$setOnInsert": { "course_name": course_name },
+    if not course_name == "":
+        course = mongo.db.course.update(
+            {"course_name": course_name},
+            { "$setOnInsert": { "course_name": course_name },
         },
-        upsert= True 
+            upsert= True 
         ); 
-    cuisine_name=request.form.get('cuisine_name')
-    cuisine = mongo.db.cuisine.update(
-        {"cuisine_name": cuisine_name},
-        { "$setOnInsert": { "cuisine_name": cuisine_name },
-        },
-        upsert= True 
-        ); 
+        cuisine_name=request.form.get('cuisine_name')
+    if not course_name == "":
+        cuisine = mongo.db.cuisine.update(
+            {"cuisine_name": cuisine_name},
+            { "$setOnInsert": { "cuisine_name": cuisine_name },
+            },
+            upsert= True 
+            ); 
     return redirect(url_for('browse_recipes'))
     
 #deletes a recipe
