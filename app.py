@@ -62,7 +62,7 @@ def display_recipe(recipe_id):
 def edit_recipe(recipe_id):
     #get the recipe that matches the recipe id '_id' is the key 
     recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
-    return render_template("editrecipe.html", recipe=recipe)
+    return render_template("editrecipe.html", recipe=recipe, allergens=mongo.db.allergens.find())
 
 #updates the database with edited recipe
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
@@ -72,17 +72,17 @@ def update_recipe(recipe_id):
     recipes.update({'_id':ObjectId(recipe_id)},
         #match form fields to keys in the recipes collection
         {
-            'recipe_name': request.form.get('recipe_name').title(),
-            'image_url' :request.form.get('image_url').title(),
-            'author' :request.form.get('author').title(),
-            'course_name': request.form.get('course_name').title(),
-            'cuisine_name': request.form.get('cuisine_name').title(),
-            'servings':request.form.get('servings').title(),
-            'prep_time':request.form.get('prep_time').title(),
-            'cook_time':request.form.get('cook_time').title(),
-            'allergens':request.form.getlist('allergen').title(),
-            'ingredients':request.form.getlist('ingredient').title(),
-            'Instructions':request.form.get('Instructions').title()
+            'recipe_name': request.form.get('recipe_name'),
+            'image_url' :request.form.get('image_url'),
+            'author' :request.form.get('author'),
+            'course_name': request.form.get('course_name'),
+            'cuisine_name': request.form.get('cuisine_name'),
+            'servings':request.form.get('servings'),
+            'prep_time':request.form.get('prep_time'),
+            'cook_time':request.form.get('cook_time'),
+            'allergens':request.form.getlist('allergen'),
+            'ingredients':request.form.getlist('ingredient'),
+            'Instructions':request.form.get('Instructions')
         })
     return redirect(url_for('browse_recipes'))
     
@@ -107,7 +107,7 @@ def insert_recipe():
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
             'allergens':request.form.getlist('allergen'),
-            'ingredients':request.form.getlist('ingredients'),
+            'ingredients':request.form.getlist('ingredient'),
             'Instructions':request.form.get('Instructions')
         })
     
