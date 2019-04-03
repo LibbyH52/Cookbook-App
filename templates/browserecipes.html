@@ -30,13 +30,12 @@
                      <label for="allergen">Exclude allergens: </label>
                         {% for allergen in allergens %}
                             <div class="form-check-inline">
-                              <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen-{{loop.index}}" id="allergen_name">
+                              <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name">
                               <label class="form-check-label" for="{{allergen.allergen_name}}">  {{allergen.allergen_name}}
                                 </label>
                         </div>
                     {% endfor %}
                 </div>
-            </div>
             </div>
             <div class="form-row">
                  <div class="col-sm-6 col-md-6 col-lg-6">
@@ -58,6 +57,13 @@
                         <div class="card-body">
                             <h5 class="card-title">{{recipe.recipe_name}}</h5>
                             <p class="card-details"> by {{recipe.author}} </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {% if recipe.course_name == "Main" %}
+                                {{recipe.course_name}} Course
+                            {% else %}
+                                {{recipe.course_name}}
+                            {% endif %}
                         </div>
                     </div>
                     </a>
