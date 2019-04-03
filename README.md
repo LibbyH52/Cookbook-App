@@ -63,3 +63,14 @@ created new git hub repository
 created new Heroku App, added IP address and PORT to config variables
 linked Herku with GitHub
 version control done using git
+
+
+## Testing
+testing each piece of functionality as went along. Fill in form one field at a time
+checking add/remove ingredient button as code was updated. 
+
+## Acknowledgements
+for adding/removing input elements https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery
+
+colour palette
+https://learnui.design/tools/data-color-picker.html#palette
