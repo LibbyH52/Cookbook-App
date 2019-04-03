@@ -48,8 +48,8 @@
                 <label for="allergen">Allergens: </label>
                 {% for allergen in allergens %}
                     <div class="form-check-inline">
+                        <label class="form-check-label" for="{{allergen.allergen_name}}"> {{allergen.allergen_name}}</label>
                         <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen">
-                        <label class="form-check-label" for="{{allergen.allergen_name}}">  {{allergen.allergen_name}}</label>
                     </div>
                 {% endfor %}
           </div>
