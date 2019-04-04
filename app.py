@@ -28,20 +28,10 @@ def browse_recipes():
         course = request.form.get("course")
         cuisine = request.form.get('cuisine')
         allergens=request.form.getlist("allergen")
-        #form = request.form.to_dict()
-        #allergens=list()
-        #filters=list()
-        #for key in form:
-         #   if key == "course" or key == "cuisine":
-          #      value_key = key
-           #     key = key.split("-")
-            #    key = key[0]
-             #   allergens.append(form[value_key])
-        print(allergens)
         
         filter_recipes= mongo.db.recipes.aggregate([{"$match":
-                {"$or": 
-                    [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergen" : { "$nin": allergens }
+                {"$and": 
+                    [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }
                     }
                 ]}
             }])
@@ -72,17 +62,17 @@ def update_recipe(recipe_id):
     recipes.update({'_id':ObjectId(recipe_id)},
         #match form fields to keys in the recipes collection
         {
-            'recipe_name': request.form.get('recipe_name'),
+            'recipe_name': request.form.get('recipe_name').title(),
             'image_url' :request.form.get('image_url'),
-            'author' :request.form.get('author'),
-            'course_name': request.form.get('course_name'),
-            'cuisine_name': request.form.get('cuisine_name'),
-            'servings':request.form.get('servings'),
-            'prep_time':request.form.get('prep_time'),
-            'cook_time':request.form.get('cook_time'),
+            'author' :request.form.get('author').title,
+            'course_name': request.form.get('course_name').title,
+            'cuisine_name': request.form.get('cuisine_name').title(),
+            'servings':request.form.get('servings').title(),
+            'prep_time':request.form.get('prep_time').title(),
+            'cook_time':request.form.get('cook_time').title(),
             'allergens':request.form.getlist('allergen'),
             'ingredients':request.form.getlist('ingredient'),
-            'Instructions':request.form.get('Instructions')
+            'instructions':request.form.get('instructions').title()
         })
     return redirect(url_for('browse_recipes'))
     
@@ -108,7 +98,7 @@ def insert_recipe():
             'cook_time':request.form.get('cook_time'),
             'allergens':request.form.getlist('allergen'),
             'ingredients':request.form.getlist('ingredient'),
-            'Instructions':request.form.get('Instructions')
+            'instructions':request.form.get('instructions')
         })
     
     
