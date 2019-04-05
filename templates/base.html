@@ -48,9 +48,12 @@
       $(".remove-input-btn").on('click', function(){
           $('#ingredient').remove();
       });
-      $("#add-btn").click(function(){
-         alert("Thank you. Your recipe has been added!");
-    });
+      $(".new-recipe").submit(function(){
+          alert("Thank you! Your recipe has been added.");
+      });
+      $(".edit-recipe").submit(function(){
+          alert("Thank you! This recipe has now been updated.");
+      });
 });
 
 </script>
