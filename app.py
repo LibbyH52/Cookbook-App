@@ -1,7 +1,7 @@
 import pymongo
 import os
 from flask import Flask, render_template, redirect, request, url_for #check meaning
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId #converts id passed from temlate in a form that's readable by Mongodb
 import config
 
@@ -39,7 +39,11 @@ def browse_recipes():
         print(filter_recipes)
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:
-        recipes = mongo.db.recipes.find()
+        recipes = mongo.db.recipes.aggregate([
+                {"$sort": {"course_name": pymongo.DESCENDING}},
+                {"$sort": {"cuisine_name": pymongo.ASCENDING}}
+        ])
+        #recipes = mongo.db.recipes.find().sort("course_name", pymongo.DESCENDING).sort("cuisine_name", pymongo.ASCENDING)
         return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine, allergens=allergens)
 
 # retrieves full recipe from database when a user clicks on'View Recipe' button
@@ -64,15 +68,15 @@ def update_recipe(recipe_id):
         {
             'recipe_name': request.form.get('recipe_name').title(),
             'image_url' :request.form.get('image_url'),
-            'author' :request.form.get('author').title,
-            'course_name': request.form.get('course_name').title,
+            'author' :request.form.get('author').title(),
+            'course_name': request.form.get('course_name').title(),
             'cuisine_name': request.form.get('cuisine_name').title(),
-            'servings':request.form.get('servings').title(),
-            'prep_time':request.form.get('prep_time').title(),
-            'cook_time':request.form.get('cook_time').title(),
+            'servings':request.form.get('servings'),
+            'prep_time':request.form.get('prep_time'),
+            'cook_time':request.form.get('cook_time'),
             'allergens':request.form.getlist('allergen'),
             'ingredients':request.form.getlist('ingredient'),
-            'instructions':request.form.get('instructions').title()
+            'instructions':request.form.get('instructions')
         })
     return redirect(url_for('browse_recipes'))
     
