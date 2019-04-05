@@ -58,10 +58,11 @@
                             <p class="card-details"> by {{recipe.author}} </p>
                         </div>
                         <div class="card-footer text-muted">
+                            <p class="card-details">{{recipe.cuisine_name}}</p>
                             {% if recipe.course_name == "Main" %}
-                                {{recipe.course_name}} Course
+                               <p class="card-details">  {{recipe.course_name}} Course</p>
                             {% else %}
-                                {{recipe.course_name}}
+                                 <p class="card-details">{{recipe.course_name}}</p>
                             {% endif %}
                         </div>
                     </div>

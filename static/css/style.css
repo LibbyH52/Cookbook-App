@@ -124,8 +124,7 @@ h5 {
 .loop-item {
     display: inline-block;
     margin-bottom: 40px;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 500px;
 }
 
 .loop-item a:hover{
@@ -134,7 +133,7 @@ h5 {
 .card {
     color: #444e86;
     margin-top: 20px;
-    min-height: 460px;
+    min-height: 500px;
 }
 
 .card-img-top {
