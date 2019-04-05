@@ -91,10 +91,16 @@ checking add/remove ingredient button as code was updated.
 ## Credits
 
 #### Content
+back to search results and cancel button
+https://www.w3schools.com/jsref/met_his_go.asp
+
 for adding/removing input elements https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery
 
 colour palette
 https://learnui.design/tools/data-color-picker.html#palette
+
+form submit function:
+https://www.w3schools.com/jquERY/event_submit.asp
 
 recipes :
 https://www.bbc.com/food
