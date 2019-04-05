@@ -80,7 +80,8 @@ h5 {
 .back-btn,
 .back-btn:hover,
 .back-btn:focus,
-.back-btn:active{
+.back-btn:active,
+.back-btn:active:focus{
     background-color: #ffffff;
     border: 1px solid #665191;
 }
@@ -92,7 +93,9 @@ h5 {
 .btn-add:focus,
 .btn-edit:focus,
 .btn-add:active,
-.btn-edit:active{
+.btn-edit:active,
+.btn-add:active:focus,
+.btn-edit:active:focus{
     background-color: #f95d6a;
     border: 1px solid #f95d6a;
 }
@@ -100,7 +103,8 @@ h5 {
 .btn-delete, 
 .btn-delete:hover,
 .btn-delete:focus,
-.btn-delete:active{
+.btn-delete:active,
+.btn-delete:active:focus{
     background-color: #ff7c43;
     border: 1px solid #ff7c43;
 }
@@ -108,7 +112,8 @@ h5 {
 .btn-cancel, 
 .btn-cancel:hover,
 .btn-cancel:focus,
-.btn-cancel:active{
+.btn-cancel:active,
+.btn-cancel:active:focus{
     background-color: #a05195;
     border: 1px solid #a05195;
 }
@@ -201,6 +206,28 @@ label {
     font-size: 1em;
 }
 
+/************************************Footer*/
+
+footer {
+    height: 150px;
+    max-width: 100vw;
+    padding: 2em 1em;
+}
+
+
+footer a,
+footer a:hover,
+footer a:focus,
+footer a:active,
+footer a:visited {
+    color: #665191;
+}
+
+.icon{
+    font-size: 3em;
+    margin-left: 0.5em;
+    text-align: center;
+}
 /*****************************Media queries*/
 
 @media screen and (min-width: 768px) {

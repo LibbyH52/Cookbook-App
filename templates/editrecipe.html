@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
   <h2>Edit recipe</h2>
     <form action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="edit-recipe">
       <div class="form-row">
@@ -9,14 +8,14 @@
           <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" value="{{recipe.recipe_name}}">
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="basic-url">Recipe image URL:</label>
-          <input type="text" class="form-control"name="image_url" id="image_url" aria-describedby="basic-addon3" placeholder="https://recipes.com/image/" value="{{recipe.image_url}}">
+          <label for="author">Recipe Author: </label>
+          <input type="text" class="form-control" name="author" id="author" placeholder="Recipe Author" value="{{recipe.author}}">
         </div>
       </div>
       <div class="form-row">
-        <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="author">Recipe Author: </label>
-          <input type="text" class="form-control" name="author" id="author" placeholder="Recipe Author" value="{{recipe.author}}">
+         <div class="col-sm-12 col-md-12">
+          <label for="basic-url">Recipe image URL:</label>
+          <input type="text" class="form-control"name="image_url" id="image_url" aria-describedby="basic-addon3" placeholder="https://recipes.com/image/" value="{{recipe.image_url}}">
         </div>
       </div>
       <div class="form-row">
@@ -84,6 +83,6 @@
       </div>
     </div>
   </form>
-</div>
+
 
 {% endblock %}
