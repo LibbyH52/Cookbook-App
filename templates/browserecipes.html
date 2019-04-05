@@ -28,23 +28,21 @@
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <label for="allergen">Exclude allergens: </label>
-                    <select multiple class="form-control" name="allergen" id="allergen">
                         {% for allergen in allergens %}
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name">
                               <label class="form-check-label" for="{{allergen.allergen_name}}">  {{allergen.allergen_name}}
                                 </label>
                         </div>
-                    {% endfor %}
-                    </select>
+                    {% endfor %} 
                 </div>
             </div>
             <div class="form-row">
-                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <button class="btn btn-primary btn-sm" type="Submit">Filter Recipes</button> 
+                 <div class="col-sm-6 col-md-6 offset-lg-3 col-lg-3">
+                    <button class="btn btn-primary btn-filter" type="Submit">Filter Recipes</button> 
                 </div>
-                <div class="col-sm-6">
-                    <a href="{{url_for('browse_recipes', recipes=all_recipes)}}" class="btn btn-primary btn-sm">Reset Filters</a>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <a href="{{url_for('browse_recipes', recipes=all_recipes)}}" class="btn btn-primary btn-cancel">Reset Filters</a>
                 </div>
             </div>
         </form>

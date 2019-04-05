@@ -67,47 +67,52 @@ h5 {
 /***********************************button styles*/
 
 .btn-primary {
-    margin: 1em 2em;
-    width: 80%;
+    color: #ffffff !important;
+    margin: 1em auto;
+    width: 60%;
 }
 
-.btn.btn-primary.btn-sm.filter-btn {
+.btn-filter,
+.btn.btn-filter:hover{
     background-color: #2f4b7c;
-    height: 80%;
-    margin: 5% 10%;
-    width: 30%;
 }
 
-.btn.btn-outline-primary.back-btn{
-    border: 1px solid #665191;
-}
-
-.btn.btn-outline-primary.back-btn:hover{
+.back-btn,
+.back-btn:hover,
+.back-btn:focus,
+.back-btn:active{
     background-color: #ffffff;
     border: 1px solid #665191;
 }
 
-.btn-edit{
+.btn-add,
+.btn-edit,
+.btn-add:hover,
+.btn-edit:hover,
+.btn-add:focus,
+.btn-edit:focus,
+.btn-add:active,
+.btn-edit:active{
     background-color: #f95d6a;
     border: 1px solid #f95d6a;
-    width: 60%;
 }
 
-.btn-edit:hover{
-    background-color: #f95d6a;
-    border: 1px solid #f95d6a;
-}
-
-.btn-delete{
-    background-color: #ff7c43;
-    border: 1px solid #ff7c43;
-    width: 60%;
-}
-
-.btn-delete:hover{
+.btn-delete, 
+.btn-delete:hover,
+.btn-delete:focus,
+.btn-delete:active{
     background-color: #ff7c43;
     border: 1px solid #ff7c43;
 }
+
+.btn-cancel, 
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel:active{
+    background-color: #a05195;
+    border: 1px solid #a05195;
+}
+
 
 /**************************style for recipe cards*/
 
@@ -115,6 +120,7 @@ h5 {
     display: inline-block;
     margin-bottom: 40px;
     min-height: 400px;
+    max-height: 400px;
 }
 
 .loop-item a:hover{
@@ -123,7 +129,7 @@ h5 {
 .card {
     color: #444e86;
     margin-top: 20px;
-    min-height: 400px;
+    min-height: 460px;
 }
 
 .card-img-top {
@@ -201,10 +207,11 @@ label {
     h3{
         font-size: 2.5em;
     }
+
     .loop-item {
         display: inline-block;
-        height: 360px;
-        max-width: 45%;
+        min-height: 440px;
+        width: 45%;
     }
     
 }
@@ -216,9 +223,9 @@ label {
     
     .loop-item {
         display: inline-block;
-        height: 360px;
-        max-width: 33%;
+        width: 33%;
     }
+    
     label {
         font-size: 1.5em;
     }

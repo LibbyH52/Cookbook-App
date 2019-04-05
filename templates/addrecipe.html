@@ -69,7 +69,14 @@
         <label for="instructions">Instructions: </label>
         <textarea class="form-control" name="instructions" id="instructions" rows="8" required></textarea>
     </div>
-    <button class="btn btn-sm" id="add-btn" type="submit" name="action">Add Recipe</button>
+    <div class="form-row">
+       <div class="col-sm-12 col-md-6 offset-lg-2 offset-lg-2 col-lg-4">
+         <button class="btn btn-primary btn-add" id="add-btn" type="submit" name="action">Add Recipe</button>
+      </div>
+       <div class="col-sm-12 col-md-6 col-lg-4">
+        <a class="btn btn-primary btn-cancel" onclick="history.go(-1)">Cancel</a>
+      </div>
+    </div>
   </form>
 </div>
 
