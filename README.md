@@ -1,4 +1,8 @@
 # Online Cookbook App Milestone 3
+This project was created as an End of Module Project for the Code Institute. The goal was to create an application using the web technogoies that we learned in the Data Centric Development module. CRUD
+
+## UX
+When a user first opens my appication they are able to view and scroll through a number of different recipes. There is a navbar at the top of t he page that takes the user back to the Home Page (if not already there) and also allows them 'Add a Recipe'. There are three drop down menus just under the hear that allow users to filter the recipes based on course name, cuisine type and potential allergens. A recipe can be viewed in its entrity by clicking on an individual recipe. The user is then taken to a simple page that displays the recipe, including its name, chef, preparation and cook time, cuisine type, course name, recipe image and igredients and instructions for preparing and cooking it. At the bottom of the page there are two buttons that allow a user to delete the recipe or edit any potential errors. If the user chooses to edit the recipe they are taken to a form that displays the recipe in individual form fields. Clicking on 'Add Recipe' takes the user to a blank HTML form that allows them to submit a recipe of their choice. 
 
 #### User Stories
 * As a user I want to visit this site so that I can search for recipes that do not contain ingredients I am allergic to.
@@ -57,6 +61,21 @@
     }
 
 
+## Features
+
+#### Existing Features
+#### Features Left to Implement
+
+## Technologies Used
+* HTML5
+* CSS3
+* Bootstrap4
+* JavaScript / jQuery
+* Python
+* Flask
+* MongoDB
+
+
 ## Deployment
 developed in cloud9
 created new git hub repository
@@ -69,8 +88,17 @@ version control done using git
 testing each piece of functionality as went along. Fill in form one field at a time
 checking add/remove ingredient button as code was updated. 
 
-## Acknowledgements
+## Credits
+
+#### Content
 for adding/removing input elements https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery
 
 colour palette
 https://learnui.design/tools/data-color-picker.html#palette
+
+recipes :
+https://www.bbc.com/food
+
+#### Media
+
+#### Acknowledgements

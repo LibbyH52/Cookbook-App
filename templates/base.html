@@ -45,10 +45,14 @@
       $(".new-input-btn").on('click', function(){
         $('<input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="20g plain flour sieved" required >').insertBefore(".new-input-btn");
       });
-        $(".remove-input-btn").on('click', function(){
+      $(".remove-input-btn").on('click', function(){
           $('#ingredient').remove();
       });
-   });
+      $("#add-btn").click(function(){
+         alert("Thank you. Your recipe has been added!");
+    });
+});
+
 </script>
     
 </body>
