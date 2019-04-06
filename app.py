@@ -14,28 +14,27 @@ app.config['DB_NAME'] = config.DB_NAME
 #creating a new instance of PyMongo and going to add the app object into that with a constructor method
 mongo = PyMongo(app)
 
-
 @app.route('/')
-#route and function to display the recipe name and title, and apply filters
 
+
+#route and function to display the recipe name and title, and apply filters
 @app.route('/browse_recipes', methods=["GET", "POST"])
 def browse_recipes():
-    cuisine = mongo.db.cuisine.find()
-    courses = mongo.db.course.find()
+    courses=mongo.db.course.find()
+    cuisine=mongo.db.cuisine.find()
     allergens = mongo.db.allergens.find()
-    recipe_allergens=mongo.db.recipe.allergens.find()
     if request.method == "POST":
         course = request.form.get("course")
         cuisine = request.form.get('cuisine')
         allergens=request.form.getlist("allergen")
         
         filter_recipes= mongo.db.recipes.aggregate([{"$match":
-                {"$and": 
-                    [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }
-                    }
-                ]}
-            }])
-        
+              {"$or":
+                   [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }
+                }
+            ]}
+       }])
+         
         print(filter_recipes)
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:
@@ -43,7 +42,7 @@ def browse_recipes():
                 {"$sort": {"course_name": pymongo.DESCENDING}},
                 {"$sort": {"cuisine_name": pymongo.ASCENDING}}
         ])
-        #recipes = mongo.db.recipes.find().sort("course_name", pymongo.DESCENDING).sort("cuisine_name", pymongo.ASCENDING)
+      
         return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine, allergens=allergens)
 
 # retrieves full recipe from database when a user clicks on'View Recipe' button

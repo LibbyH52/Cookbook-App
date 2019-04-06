@@ -150,6 +150,7 @@ h5 {
 
 .card-details{
     text-align: center;
+    font-variant: small-caps;
 }
 
 /*************************style for select elements*/
