@@ -2,13 +2,13 @@
 This project was created as an End of Module Project for the Code Institute. The goal was to create an application using the web technogoies that we learned in the Data Centric Development module. CRUD
 
 ## UX
-When a user first opens my appication they are able to view and scroll through a number of different recipes. There is a navbar at the top of t he page that takes the user back to the Home Page (if not already there) and also allows them 'Add a Recipe'. There are three drop down menus just under the hear that allow users to filter the recipes based on course name, cuisine type and potential allergens. A recipe can be viewed in its entrity by clicking on an individual recipe. The user is then taken to a simple page that displays the recipe, including its name, chef, preparation and cook time, cuisine type, course name, recipe image and igredients and instructions for preparing and cooking it. At the bottom of the page there are two buttons that allow a user to delete the recipe or edit any potential errors. If the user chooses to edit the recipe they are taken to a form that displays the recipe in individual form fields. Clicking on 'Add Recipe' takes the user to a blank HTML form that allows them to submit a recipe of their choice. 
+When a user first opens my appication they are able to view and scroll through a number of different recipes.These recipes are organised by cuisine type and within that by course. There is a navbar at the top of the page that takes the user back to the Home Page (if not already there) and also allows them 'Add a Recipe'. There are three drop down menus just under the header that allow users to filter the recipes based on course name, cuisine type and potential allergens. A recipe can be viewed in its entirety by clicking on a recipe card. The user is then taken to a single page that displays the recipe, including its name, chef, preparation and cook time, cuisine type, course name, recipe image and igredients and instructions for preparing and cooking it. At the bottom of the page there are two buttons that allow a user to delete the recipe or edit any potential errors. If the user chooses to edit the recipe they are taken to a form that displays the recipe in individual form fields. Clicking on 'Add Recipe' takes the user to a blank HTML form that allows them to submit a recipe of their choice. 
 
 #### User Stories
 * As a user I want to visit this site so that I can search for recipes that do not contain ingredients I am allergic to.
 * As a user I want to visit this site so I can add and store my own recipes and keep them in one place.
 * As foodie I want to visit this site so that I can filter recipes based on different types of cuisine. 
-* As a keen baker I want to visit this site so that I can search for, store and edit various recipes.
+* As a keen baker I want to visit this site so that I can search for and edit various recipes.
 
 #### Wireframes
 * Landing Page ![landingPage](static/wireframes/landingPage.png/)
@@ -74,14 +74,18 @@ When a user first opens my appication they are able to view and scroll through a
 * Python
 * Flask
 * MongoDB
+* PyMongo
+* Jinja for rendering templates
 
 
 ## Deployment
 developed in cloud9
 created new git hub repository
+git add and commit after each new piece of functionality
+version control done using git
 created new Heroku App, added IP address and PORT to config variables
 linked Herku with GitHub
-version control done using git
+
 
 
 ## Testing
@@ -91,23 +95,19 @@ checking add/remove ingredient button as code was updated.
 ## Credits
 
 #### Content
-back to search results and cancel button
-https://www.w3schools.com/jsref/met_his_go.asp
+The code for creating the button to allow users to go back to the previous page, I got from [w3schools](https://www.w3schools.com/jsref/met_his_go.asp)
 
-for adding/removing input elements https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery
+The code for adding and removing input elements, which allows a user to add or remove ingredients, I got from [stackoverflow](https://stackoverflow.com/questions/9173182/add-remove-input-field-dynamically-with-jquery)
 
-colour palette
-https://learnui.design/tools/data-color-picker.html#palette
+The colour scheme I used for my buttons, font-colours, headings and footers was gotten from [here](https://learnui.design/tools/data-color-picker.html#palette)
 
-form submit function:
-https://www.w3schools.com/jquERY/event_submit.asp
+The jQuery code to cause an alert message when the user submits or edits a recipe I got from [w3schools](https://www.w3schools.com/jquERY/event_submit.asp)
 
-recipes :
-https://www.bbc.com/food
+All of the recipes on my database and add by me, through the front end were obtained from                            [bbc food](https://www.bbc.com/food)
 
-code for sorting by cusine name and then by course name:
-https://stackoverflow.com/questions/43472561/mongodb-sort-the-result-after-limit
+The code for sorting the recipes on my Home Page I got from [stackoverflow](https://stackoverflow.com/questions/43472561/mongodb-sort-the-result-after-limit)
 
 #### Media
+The header image in my header I got from [pixabay](https://pixabay.com/photos/ingredients-cooking-preparation-498199/)
 
 #### Acknowledgements
