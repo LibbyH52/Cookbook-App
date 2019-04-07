@@ -3,13 +3,18 @@ import os
 from flask import Flask, render_template, redirect, request, url_for #check meaning
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId #converts id passed from temlate in a form that's readable by Mongodb
-import config
+
 
 app = Flask(__name__)
 
 # constants are set in a config.py file
-app.config['MONGO_URI'] = config.MONGO_URI
-app.config['DB_NAME'] = config.DB_NAME
+if app.config["DEBUG"] == True:
+    import config
+    app.config['MONGO_URI'] = config.MONGO_URI
+    app.config['DB_NAME'] = config.DB_NAME
+else:
+    app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+    app.config["DB_NAME"] = os.getenv("DB_NAME")
 
 #creating a new instance of PyMongo and going to add the app object into that with a constructor method
 mongo = PyMongo(app)
@@ -22,19 +27,18 @@ mongo = PyMongo(app)
 def browse_recipes():
     courses=mongo.db.course.find()
     cuisine=mongo.db.cuisine.find()
+    recipes=mongo.db.recipes.find()
     allergens = mongo.db.allergens.find()
     if request.method == "POST":
-        course = request.form.get("course")
+        course= request.form.get("course")
         cuisine = request.form.get('cuisine')
         allergens=request.form.getlist("allergen")
-        
-        filter_recipes= mongo.db.recipes.aggregate([{"$match":
-              {"$or":
-                   [{ "course_name" : course }, { "cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }
-                }
-            ]}
-       }])
-         
+    
+        filter_recipes=mongo.db.recipes.find( {"$and": 
+            [{"course_name" : course }, {"cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }} ] 
+            
+        })
+            
         print(filter_recipes)
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:
@@ -115,8 +119,8 @@ def insert_recipe():
         },
             upsert= True 
         ); 
-        cuisine_name=request.form.get('cuisine_name')
-    if not course_name == "":
+    cuisine_name=request.form.get('cuisine_name')
+    if not cuisine_name == "":
         cuisine = mongo.db.cuisine.update(
             {"cuisine_name": cuisine_name},
             { "$setOnInsert": { "cuisine_name": cuisine_name },
