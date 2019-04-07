@@ -73,6 +73,14 @@ h5 {
     width: 60%;
 }
 
+.btn-allergen,
+.btn-allergen:hover,
+.btn-allergen:focus,
+.btn-allergen:active,
+.btn-allergen:active:focus{
+    width: 80%;
+}
+
 .btn-filter,
 .btn.btn-filter:hover{
     background-color: #2f4b7c;
@@ -83,7 +91,7 @@ h5 {
 .back-btn:focus,
 .back-btn:active,
 .back-btn:active:focus{
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     border: 1px solid #665191;
 }
 
@@ -207,6 +215,10 @@ label {
     font-size: 1em;
 }
 
+.form-check-input{
+    position: relative;
+    font-size: 1.25em;
+}
 /************************************Footer*/
 
 footer {
@@ -254,6 +266,9 @@ footer a:visited {
         width: 33%;
     }
     
+    .btn-allergen{
+        margin-top: 2.5em;
+    }
     label {
         font-size: 1.5em;
     }
