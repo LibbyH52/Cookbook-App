@@ -50,16 +50,16 @@
         </div>
         <div class="col-sm-12 col-md-4 form-group">
           <label for="cuisine">Cuisine Type: </label>
-          <input type="text" class="form-control" name="cuisine_name" id="cuisine" placeholder="{{recipe.cuisine_name}}" value="{{recipe.cuisine_name}}">
+          <input type="text" class="form-control" name="cuisine" id="cuisine" placeholder="{{recipe.cuisine_name}}" value="{{recipe.cuisine_name}}">
         </div>
-          <div class=" col-sm-12 col-md-6 col-lg-4 form-group">
+        <div class=" col-sm-12 col-md-6 col-lg-4 form-group">
           <label for="allergens">Allergens: </label>
           <label for="basic-url">Allergens:</label>
           <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Please choose... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
             <div class="collapse" id="collapseAllergen">
             {% for allergen in allergens %}
               {% if allergen.allergen_name in recipe.allergens %}
-                <div class="form-check-inline">
+                <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name" checked>
                 <label class="form-check-label" for="{{allergen.allergen_name}}">
                     {{allergen.allergen_name}}</label>
@@ -77,13 +77,13 @@
       </div>
       <div class="form-row">
         <div class="col-sm-12 col-md-12 col-lg-12 form-group">
-           <label for="ingredients">Ingredients: </label>
-        {% for ingredient in recipe.ingredients %}
-          <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}">
-        {% endfor %}
-        <button type="button" class="new-input-btn"><i class="fa fa-plus" aria-hidden="true"></i>
+          <label for="ingredients">Ingredients: </label>
+          {% for ingredient in recipe.ingredients %}
+            <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}">
+          {% endfor %}
+          <button type="button" class="new-input-btn"><i class="fa fa-plus" aria-hidden="true"></i>
           </button>
-        <button type="button" class="remove-input-btn"><i class="fa fa-minus" aria-hidden="true"></i>
+          <button type="button" class="remove-input-btn"><i class="fa fa-minus" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -93,14 +93,14 @@
         <textarea class="form-control" name="instructions" id="instructions" value="{{recipe.instructions}}" rows="8">{{recipe.instructions}}</textarea>
       </div>
     </div>
-    <div class="form-row">
-      <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
-        <button class="btn btn-primary btn-add" type="submit" name="action">Edit Recipe</button>
+      <div class="form-row">
+        <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
+          <button class="btn btn-primary btn-add" type="submit" name="action">Edit Recipe</button>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+           <a class="btn btn-primary btn-cancel" onclick="history.go(-1)">Cancel</a>
+        </div>
       </div>
-      <div class="col-sm-12 col-md-6 col-lg-3">
-       <a class="btn btn-primary btn-cancel" onclick="history.go(-1)">Cancel</a>
-      </div>
-    </div>
   </form>
 
 

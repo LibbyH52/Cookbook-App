@@ -72,7 +72,7 @@ def update_recipe(recipe_id):
             'image_url' :request.form.get('image_url'),
             'author' :request.form.get('author'),
             'course_name': request.form.get('course'),
-            'cuisine_name': request.form.get('cuisine_name'),
+            'cuisine_name': request.form.get('cuisine'),
             'servings':int(request.form.get('servings')),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
@@ -99,7 +99,7 @@ def insert_recipe():
             'image_url' :request.form.get('image_url'),
             'author' :request.form.get('author'),
             'course_name': request.form.get('course'),
-            'cuisine_name': request.form.get('cuisine_name'),
+            'cuisine_name': request.form.get('cuisine'),
             'servings':int(request.form.get('servings')),
             'prep_time':request.form.get('prep_time'),
             'cook_time':request.form.get('cook_time'),
@@ -132,7 +132,7 @@ def insert_recipe():
 #deletes a recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    #mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
     return redirect(url_for('browse_recipes'))
     
 if __name__ == '__main__':
