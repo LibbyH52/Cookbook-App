@@ -56,9 +56,10 @@ def display_recipe(recipe_id):
 #selects a recipe and retreives from the database using its id and displays it in a form to allow the user to edit its properties
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    courses=mongo.db.course.find()
     #get the recipe that matches the recipe id '_id' is the key 
     recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
-    return render_template("editrecipe.html", recipe=recipe, allergens=mongo.db.allergens.find())
+    return render_template("editrecipe.html", recipe=recipe, courses=courses, allergens=mongo.db.allergens.find())
 
 #updates the database with edited recipe
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
@@ -86,7 +87,8 @@ def update_recipe(recipe_id):
 # displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html', allergens=mongo.db.allergens.find())        
+    courses=mongo.db.course.find()
+    return render_template('addrecipe.html', courses=courses, allergens=mongo.db.allergens.find())        
 
 @app.route('/insert_recipe', methods=["GET", "POST"])
 def insert_recipe():
@@ -131,7 +133,7 @@ def insert_recipe():
 #deletes a recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+    #mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
     return redirect(url_for('browse_recipes'))
     
 if __name__ == '__main__':

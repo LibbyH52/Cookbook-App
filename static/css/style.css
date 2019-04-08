@@ -78,7 +78,11 @@ h5 {
 .btn-allergen:focus,
 .btn-allergen:active,
 .btn-allergen:active:focus{
-    width: 80%;
+    background-color: #ffffff;
+    border-color: grey;
+    color: #003f5c;
+    height: 36px;
+    width: 100%;
 }
 
 .btn-filter,
@@ -170,9 +174,15 @@ h5 {
     width: 100%;
 }
 
-.form-inline .form-control {
-    width: 100%;
+.form-control{
+    border-color: #003f5c;
+    color: #2f4b7c;
     margin: 0 auto;
+    width: 100%;
+}
+
+.form-control::placeholder{
+    color: #C0C0C0;
 }
 
 label{
@@ -267,7 +277,7 @@ footer a:visited {
     }
     
     .btn-allergen{
-        margin-top: 2.5em;
+        width: 100%;
     }
     label {
         font-size: 1.5em;
