@@ -1,12 +1,12 @@
 # Online Cookbook App Milestone 3
-This project was created as an End of Module Project for the Code Institute. The goal was to create an application using the web technogoies that we learned in the Data Centric Development module. CRUD
+This project was created as an End of Module Project for the Code Institute's Data Centric Development Module. I chose to follow the example brief and create and an online cookbook. I decided to focus on dinner options from around the world. A user can select a starter, main course or desert from a variety of cuisines.
 
 ## UX
-When a user first opens my appication they are able to view and scroll through a number of different recipes.These recipes are organised by cuisine type and within that by course. There is a navbar at the top of the page that takes the user back to the Home Page (if not already there) and also allows them 'Add a Recipe'. There are three drop down menus just under the header that allow users to filter the recipes based on course name, cuisine type and potential allergens. A recipe can be viewed in its entirety by clicking on a recipe card. The user is then taken to a single page that displays the recipe, including its name, chef, preparation and cook time, cuisine type, course name, recipe image and igredients and instructions for preparing and cooking it. At the bottom of the page there are two buttons that allow a user to delete the recipe or edit any potential errors. If the user chooses to edit the recipe they are taken to a form that displays the recipe in individual form fields. Clicking on 'Add Recipe' takes the user to a blank HTML form that allows them to submit a recipe of their choice. 
+When a user first opens my appication they are able to view and scroll through a number of different recipes.These recipes are organised by cuisine type and within that by course name. There is a navbar at the top of the page that takes the user back to the Home Page (if not already there) and also allows them 'Add a Recipe'. There are three drop down menus just under the header that allow users to filter the recipes based on cuisine type and/or potential allergens. A recipe can be viewed in its entirety by clicking on its recipe card. The user is then taken to a single page that displays the recipe, this its name, chef of recipe author, preparation and cook time, cuisine type, course name, recipe image, igredients and preparation and cooking instructions. At the bottom of the page there are two buttons that allow a user to delete or edit the recipe. Choosing to Add or a Recipe takes a user to a single page containing a form that allows them to add or update a recipe and submit it to the database. Upon submission the user will be taken back to the Homepage where the updated / new recipe can be viewed. 
 
 #### User Stories
 * As a user I want to visit this site so that I can search for recipes that do not contain ingredients I am allergic to.
-* As a user I want to visit this site so I can add and store my own recipes and keep them in one place.
+* As a user I want to visit this site to give me some ideas for a dinner party I am throwing.
 * As foodie I want to visit this site so that I can filter recipes based on different types of cuisine. 
 * As a keen baker I want to visit this site so that I can search for and edit various recipes.
 
@@ -18,6 +18,7 @@ When a user first opens my appication they are able to view and scroll through a
 
 #### Database Schema
 * Schema Outline ![schema outline](static/DatabaseSchema/databaseSchema.png/)
+* Updated Schema ![updated schema](static/DatabaseSchema/updatedDatabaseSchema.png/)
 
 ##### Example Recipe Schema
 {  
@@ -67,15 +68,17 @@ When a user first opens my appication they are able to view and scroll through a
 #### Features Left to Implement
 
 ## Technologies Used
-* HTML5
-* CSS3
-* Bootstrap4
-* JavaScript / jQuery
-* Python
-* Flask
-* MongoDB
-* PyMongo
-* Jinja for rendering templates
+* HTML5 was used to structure and add content to the Jinja templates
+
+* Bootstrap4 and CSS3 were used structure the layout and style the elements in the app
+
+* JavaScript / jQuery added interactivity to the site. 
+    
+* Flask was used to run the application and code was written in the Python / PyMongo. 
+
+* MongoDB Atlas was used for hosting the database
+
+* Jinja was used for rendering the templates
 
 
 ## Deployment
