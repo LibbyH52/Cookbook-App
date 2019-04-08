@@ -1,9 +1,8 @@
 import pymongo
 import os
-from flask import Flask, render_template, redirect, request, url_for #check meaning
+from flask import Flask, render_template, redirect, request, url_for 
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId #converts id passed from temlate in a form that's readable by Mongodb
-
 
 app = Flask(__name__)
 
@@ -31,15 +30,15 @@ def browse_recipes():
     allergens = mongo.db.allergens.find()
     filters=list()
     if request.method == "POST":
-        course= request.form.get("course")
-        cuisine = request.form.get('cuisine')
+        #course= request.form.get("course")
+        filters=list()
+        course = request.form.get("course")
+        cuisine = request.form.getlist('cuisine')
         allergens=request.form.getlist("allergen")
         
-        filter_recipes=mongo.db.recipes.find( {"$and": 
-           [{"course_name" : course }, {"cuisine_name" : cuisine }, {"allergens" : { "$nin": allergens }} ] 
-        })
+        filter_recipes=mongo.db.recipes.find({"$and":[ {"course_name" :{"$in" : course}}, {"cuisine_name" :{"$in" : cuisine }}, {"allergens" : { "$nin": allergens }}] })
             
-        return render_template('browserecipes.html', recipes=filter_recipes, courses=courses, cuisine=cuisine)
+        return render_template('browserecipes.html', recipes=filter_recipes, cuisine=cuisine)
     else:
         recipes = mongo.db.recipes.aggregate([
                 {"$sort": {"course_name": pymongo.DESCENDING}},

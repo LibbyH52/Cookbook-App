@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
     {% block content %}
         <h2>Browse Recipes</h2>
-        <form action="/browse_recipes" method="POST">
+        <form action="/browse_recipes" class="form-filters" method="POST">
            <div class="row">
-               <div class="col-sm-12 col-md-6 col-lg-4">
-                   <div class="form-group">
-                        <label for="course">Filter by course: </label>
-                        <select class="form-control" name="course" id="course">
-                            <option disabled selected>Please choose...</option>
+               <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                    <label for="course">Filter by course: </label>
+                    <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
+                    <div class="collapse" id="collapseCourse">
                         {% for course in courses %}
-                          <option value="{{course.course_name}}"> {{course.course_name}}</option>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{course.course_name}}" name="course" id="course_name">
+                                <label class="form-check-label" for="{{course.course_name}}">{{course.course_name}}
+                                </label>
+                            </div>
                         {% endfor %}
-                    </select>
                    </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                   <div class="form-group">
-                        <label for="cuisine">Filter by cuisine: </label>
-                        <select class="form-control" name="cuisine" id="cuisine">
-                            <option disabled selected>Please choose...</option>
-                            {% for cuisine in cuisine %}
-                                  <option value="{{cuisine.cuisine_name}}"> {{cuisine.cuisine_name}}</option>
-                            {% endfor %}
-                        </select>
+                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                    <label for="cuisine">Filter by cuisine: </label>
+                    <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">Choose Cuisine... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
+                    <div class="collapse" id="collapseCuisine">
+                        {% for cuisine in cuisine %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{cuisine.cuisine_name}}" name="cuisine" id="cuisine_name">
+                                <label class="form-check-label" for="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}
+                                </label>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <label for="basic-url">Exclude Allergens:</label>
-                    <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-chevron-down"></i><data-target></data-target>Choose allergens...</button>
+                    <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Choose allergens...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
                     <div class="collapse" id="collapseAllergen">
                         {% for allergen in allergens %}
                               <div class="form-check">
