@@ -68,32 +68,40 @@ When a user first opens my appication they are able to view and scroll through a
 #### Features Left to Implement
 
 ## Technologies Used
-* HTML5 was used to structure and add content to the Jinja templates
-
-* Bootstrap4 and CSS3 were used structure the layout and style the elements in the app
-
+* HTML5 for injecting content into the templates
+* Bootstrap4 and CSS3 for structuring and styling the templates
 * JavaScript / jQuery added interactivity to the site. 
-    
-* Flask was used to run the application and code was written in the Python / PyMongo. 
-
-* MongoDB Atlas was used for hosting the database
-
+* Flask was used to run the application and code was written in the Python 
+* MongoDB Atlas was used for creating and storing the database
 * Jinja was used for rendering the templates
 
-
 ## Deployment
-developed in cloud9
-created new git hub repository
-git add and commit after each new piece of functionality
-version control done using git
-created new Heroku App, added IP address and PORT to config variables
-linked Herku with GitHub
+This application was developed entirely in Cloud9 and was deployed using Heroku. A live version of the site can be found [here](https://online-cookbook4.herokuapp.com/). Version control was done using git.With each change being added and committed to git.  
+To deploy the application to Heroku, I connected my Heroku app to the relevant GitHub repository to allow for automatic deploys from the GitHub master branch. I stored the MONGO_URI string and DATABASE_NAME as environment variables, that are accessed using os.getenv() method, and I set debug mode to False. 
 
 
 
 ## Testing
+My CSS file was tested using teh Jigsaw validator and no errors wer found. 
+
+<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    </a>
+</p>
+<p>
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    <img style="border:0;width:88px;height:31px"
+        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+        alt="Valid CSS!" />
+    </a>
+</p>
+
 testing each piece of functionality as went along. Fill in form one field at a time
 checking add/remove ingredient button as code was updated. 
+Application was examined on a number of screen sizes using the brower's dev tools. 
 
 ## Credits
 
@@ -109,6 +117,8 @@ The jQuery code to cause an alert message when the user submits or edits a recip
 All of the recipes on my database and add by me, through the front end were obtained from                            [bbc food](https://www.bbc.com/food)
 
 The code for sorting the recipes on my Home Page I got from [stackoverflow](https://stackoverflow.com/questions/43472561/mongodb-sort-the-result-after-limit)
+
+All recipes add by me, either directly into MongoDB or through the front end when testing, were obtained from [bbc food](https://www.bbc.com/food) and are used for educational purposes only, in line with permissions given on their site. 
 
 #### Media
 The header image in my header I got from [pixabay](https://pixabay.com/photos/ingredients-cooking-preparation-498199/)
