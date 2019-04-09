@@ -64,6 +64,10 @@
           $(".edit-recipe").submit(function(){
               alert("Thank you! This recipe has now been updated.");
           });
+          $(".btn-filter").attr("disabled", true)
+            $(".form-check-input").change(function(){
+              $(".btn-filter").attr("disabled", $(".form-check-input").length == 0)
+            });
       });
     </script>
    </body> 

@@ -120,6 +120,8 @@ The code for sorting the recipes on my Home Page I got from [stackoverflow](http
 
 All recipes add by me, either directly into MongoDB or through the front end when testing, were obtained from [bbc food](https://www.bbc.com/food) and are used for educational purposes only, in line with permissions given on their site. 
 
+The code to disable the Filter Recipes button unless at least one check box has been selected was found [here](https://www.askingbox.com/tutorial/jquery-disable-submit-button-if-no-checkbox-is-selected)
+
 #### Media
 The header image in my header I got from [pixabay](https://pixabay.com/photos/ingredients-cooking-preparation-498199/)
 
