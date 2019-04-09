@@ -30,15 +30,17 @@ def browse_recipes():
     allergens = mongo.db.allergens.find()
     filters=list()
     if request.method == "POST":
-        #course= request.form.get("course")
-        filters=list()
-        course = request.form.get("course")
+        course = request.form.getlist("course")
         cuisine = request.form.getlist('cuisine')
         allergens=request.form.getlist("allergen")
         
-        filter_recipes=mongo.db.recipes.find({"$and":[ {"course_name" :{"$in" : course}}, {"cuisine_name" :{"$in" : cuisine }}, {"allergens" : { "$nin": allergens }}] })
-            
-        return render_template('browserecipes.html', recipes=filter_recipes, cuisine=cuisine)
+        filter_recipes=mongo.db.recipes.find({"$or": [
+            {"$and": [ {"course_name" :{"$in" : course}}, {"cuisine_name" :{"$in" : cuisine }}, {"allergens" : { "$nin": allergens }} ]}
+            ]}
+            )
+    
+        
+        return render_template('browserecipes.html', recipes=filter_recipes)
     else:
         recipes = mongo.db.recipes.aggregate([
                 {"$sort": {"course_name": pymongo.DESCENDING}},
@@ -112,18 +114,11 @@ def insert_recipe():
     
     course_name=request.form.get('course_name')
    # adds new course and cuisine names, if not already there
-    if not course_name == "":
-        course = mongo.db.course.update(
-            {"course_name": course_name},
-            { "$setOnInsert": { "course_name": course_name },
-        },
-            upsert= True 
-        ); 
-    cuisine_name=request.form.get('cuisine_name')
-    if not cuisine_name == "":
+    cuisine=request.form.get('cuisine')
+    if not cuisine == "":
         cuisine = mongo.db.cuisine.update(
-            {"cuisine_name": cuisine_name},
-            { "$setOnInsert": { "cuisine_name": cuisine_name },
+            {"cuisine_name": cuisine},
+            { "$setOnInsert": { "cuisine_name": cuisine },
             },
             upsert= True 
             ); 
