@@ -19,21 +19,21 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="col-sm-12 col-md-5 col-lg-4">
           <label for="author">Prep Time: </label>
           <input type="text" class="form-control" name="prep_time" id="prep_time" placeholder="30mins-1hour" value="{{recipe.cook_time}}">
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="col-sm-12 col-md-5 col-lg-4">
           <label for="author">Cook Time: </label>
           <input type="text" class="form-control" name="cook_time" id="cook_time" placeholder="1-2 hours" value="{{recipe.prep_time}}">
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="col-sm-12 col-md-2 col-lg-4">
           <label class="form-label" for="Serving Size">Servings: </label>
           <input type="number" min="1" class="form-control" name="servings" id="servings" value="{{recipe.servings}}">
         </div>
       </div>
       <div class="form-row">
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <div class="form-group">
               <label for="course">Filter by course: </label>
                 <select class="form-control" name="course" id="course">
@@ -48,11 +48,11 @@
                 </select>
             </div>
         </div>
-        <div class="col-sm-12 col-md-4 form-group">
+        <div class="col-sm-12 col-md-6 col-lg-4 form-group">
           <label for="cuisine">Cuisine Type: </label>
           <input type="text" class="form-control" name="cuisine" id="cuisine" placeholder="{{recipe.cuisine_name}}" value="{{recipe.cuisine_name}}">
         </div>
-        <div class=" col-sm-12 col-md-6 col-lg-4 form-group">
+        <div class=" col-sm-12 col-md-12 col-lg-4 form-group">
           <label for="allergens">Allergens: </label>
           <label for="basic-url">Allergens:</label>
           <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Please choose... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
