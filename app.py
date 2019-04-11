@@ -20,24 +20,23 @@ mongo = PyMongo(app)
 
 @app.route('/')
 
-
 #route and function to display the recipe name and title, and apply filters
 @app.route('/browse_recipes', methods=["GET", "POST"])
 def browse_recipes():
-    courses=mongo.db.course.find()
-    cuisine=mongo.db.cuisine.find()
-    recipes=mongo.db.recipes.find()
+    courses = mongo.db.course.find()
+    cuisine = mongo.db.cuisine.find()
+    recipes = mongo.db.recipes.find()
     allergens = mongo.db.allergens.find()
     filters=list()
     if request.method == "POST":
         course = request.form.getlist("course")
         cuisine = request.form.getlist('cuisine')
-        allergens=request.form.getlist("allergen")
+        allergens = request.form.getlist("allergen")
         
         filter_recipes=mongo.db.recipes.find({"$or": [
             {"$and": [ {"course_name" :{"$in" : course}}, {"cuisine_name" :{"$in" : cuisine }}, {"allergens" : { "$nin": allergens }} ]}
             ]}
-            )
+        )
     
         
         return render_template('browserecipes.html', recipes=filter_recipes)
@@ -57,9 +56,9 @@ def display_recipe(recipe_id):
 #selects a recipe and retreives from the database using its id and displays it in a form to allow the user to edit its properties
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    courses=mongo.db.course.find()
+    courses = mongo.db.course.find()
     #get the recipe that matches the recipe id '_id' is the key 
-    recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
+    recipe = mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
     return render_template("editrecipe.html", recipe=recipe, courses=courses, allergens=mongo.db.allergens.find())
 
 #updates the database with edited recipe
@@ -82,13 +81,21 @@ def update_recipe(recipe_id):
             'ingredients':request.form.getlist('ingredient'),
             'instructions':request.form.get('instructions')
         })
+    cuisine=request.form.get('cuisine')
+    if not cuisine == "":
+        cuisine = mongo.db.cuisine.update(
+            {"cuisine_name": cuisine},
+            { "$setOnInsert": { "cuisine_name": cuisine },
+            },
+            upsert= True 
+        ); 
     return redirect(url_for('browse_recipes'))
     
     
 # displays a form that allows the user to add a recipe to the database (only partially complete)
 @app.route('/add_recipe')
 def add_recipe():
-    courses=mongo.db.course.find()
+    courses = mongo.db.course.find()
     return render_template('addrecipe.html', courses=courses, allergens=mongo.db.allergens.find())        
 
 @app.route('/insert_recipe', methods=["GET", "POST"])
@@ -109,18 +116,15 @@ def insert_recipe():
             'ingredients':request.form.getlist('ingredient'),
             'instructions':request.form.get('instructions')
         })
-    
-    
-    
-    course_name=request.form.get('course_name')
+    course_name = request.form.get('course_name')
    # adds new course and cuisine names, if not already there
-    cuisine=request.form.get('cuisine')
+    cuisine = request.form.get('cuisine')
     if not cuisine == "":
         cuisine = mongo.db.cuisine.update(
             {"cuisine_name": cuisine},
             { "$setOnInsert": { "cuisine_name": cuisine },
             },
-            upsert= True 
+            upsert = True 
             ); 
     return redirect(url_for('browse_recipes'))
     

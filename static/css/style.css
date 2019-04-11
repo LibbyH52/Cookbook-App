@@ -255,8 +255,8 @@ footer a:visited {
 }
 
 .icon{
-    font-size: 3rem;
-    margin-left: 0.25em;
+    font-size: 3em;
+    margin: 0.3em;
     text-align: center;
 }
 /*****************************Media queries*/
@@ -279,6 +279,10 @@ footer a:visited {
 }
 
 @media screen and (min-width: 992px) {
+    header{
+        height: 60vh;
+    }
+    
     h1{
         font-size: 5em;
     }
