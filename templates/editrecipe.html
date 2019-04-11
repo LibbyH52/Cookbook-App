@@ -1,105 +1,108 @@
-{% extends 'base.html' %}
-{% block content %}
-  <h2>Edit recipe</h2>
-    <form action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="edit-recipe">
-      <div class="form-row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label for="recipe_name">Recipe Name: </label>
-          <input type="text" class="form-control" name="recipe_name" id="recipe_name" value="{{recipe.recipe_name}}" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="basic-url">Recipe image URL:</label>
-          <input type="text" class="form-control" name="image_url" id="image_url" value="{{recipe.image_url}}" required>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="author">Recipe Author: </label>
-          <input type="text" class="form-control" name="author" id="author" value="{{recipe.author}}" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-sm-12 col-md-5 col-lg-4">
-          <label for="author">Prep Time: </label>
-          <input type="text" class="form-control" name="prep_time" id="prep_time" placeholder="30mins-1hour" value="{{recipe.cook_time}}">
-        </div>
-        <div class="col-sm-12 col-md-5 col-lg-4">
-          <label for="author">Cook Time: </label>
-          <input type="text" class="form-control" name="cook_time" id="cook_time" placeholder="1-2 hours" value="{{recipe.prep_time}}">
-        </div>
-        <div class="col-sm-12 col-md-2 col-lg-4">
-          <label class="form-label" for="Serving Size">Servings: </label>
-          <input type="number" min="1" class="form-control" name="servings" id="servings" value="{{recipe.servings}}">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-sm-12 col-md-6 col-lg-4">
-          <div class="form-group">
-              <label for="course">Filter by course: </label>
-                <select class="form-control" name="course" id="course">
-                  <option disabled selected>Please choose...</option>
-                  {% for course in courses %}
-                    {% if course.course_name == recipe.course_name %}
-                      <option value="{{course.course_name}}" selected> {{course.course_name}}</option>
-                    {% else %}
-                      <option value="{{course.course_name}}"> {{course.course_name}}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 form-group">
-          <label for="cuisine">Cuisine Type: </label>
-          <input type="text" class="form-control" name="cuisine" id="cuisine" placeholder="{{recipe.cuisine_name}}" value="{{recipe.cuisine_name}}">
-        </div>
-        <div class=" col-sm-12 col-md-12 col-lg-4 form-group">
-          <label for="allergens">Allergens: </label>
-          <label for="basic-url">Allergens:</label>
-          <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Please choose... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
-            <div class="collapse" id="collapseAllergen">
-            {% for allergen in allergens %}
-              {% if allergen.allergen_name in recipe.allergens %}
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name" checked>
-                <label class="form-check-label" for="{{allergen.allergen_name}}">
-                    {{allergen.allergen_name}}</label>
-              </div>
-              {% else %}
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name">
-                <label class="form-check-label" for="{{allergen.allergen_name}}">
-                    {{allergen.allergen_name}}</label>
-              </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-      </div>
-      </div>
-      <div class="form-row" id="ingredients-row">
-        <div class="col-sm-12 col-md-12 col-lg-12 form-group">
-          <label for="ingredients">Ingredients: </label>
-          {% for ingredient in recipe.ingredients %}
-            <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}">
+{% extends 'base.html' %} {% block content %}
+<h2>Edit recipe</h2>
+<!--displays recipe in form fields to allow for updating / editing -->
+<form action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="edit-recipe">
+  <div class="form-row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <label for="recipe_name">Recipe Name: </label>
+      <input type="text" class="form-control" name="recipe_name" id="recipe_name" value="{{recipe.recipe_name}}" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <label for="image_url">Recipe image URL:</label>
+      <input type="text" class="form-control" name="image_url" id="image_url" value="{{recipe.image_url}}" required>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <label for="author">Recipe Author: </label>
+      <input type="text" class="form-control" name="author" id="author" value="{{recipe.author}}" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-sm-12 col-md-5 col-lg-4">
+      <label for="prep_time">Prep Time: </label>
+      <input type="text" class="form-control" name="prep_time" id="prep_time" placeholder="30mins-1hour" value="{{recipe.cook_time}}">
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-4">
+      <label for="cook_time">Cook Time: </label>
+      <input type="text" class="form-control" name="cook_time" id="cook_time" placeholder="1-2 hours" value="{{recipe.prep_time}}">
+    </div>
+    <div class="col-sm-12 col-md-2 col-lg-4">
+      <label class="form-label" for="servings">Servings: </label>
+      <input type="number" min="1" class="form-control" name="servings" id="servings" value="{{recipe.servings}}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="form-group">
+        <label for="course">Filter by course: </label>
+        <select class="form-control" name="course" id="course">
+          <!-- iterates through course_names in course collection and boxes appear checked if course_name matches recipe course_name-->
+          <option disabled selected>Please choose...</option>
+          {% for course in courses %}
+            {% if course.course_name == recipe.course_name %}
+              <option value="{{course.course_name}}" selected> {{course.course_name}}</option>
+            {% else %}
+              <option value="{{course.course_name}}"> {{course.course_name}}</option>
+            {% endif %}
           {% endfor %}
-          <button type="button" class="new-input-btn"><i class="fa fa-plus" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="remove-input-btn"><i class="fa fa-minus" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-      <div class="form-row">
-       <div class="col-sm-12 col-md-12 col-lg-12 form-group">
-        <label for="instructions">Instructions: </label>
-        <textarea class="form-control" name="instructions" id="instructions" value="{{recipe.instructions}}" rows="8">{{recipe.instructions}}</textarea>
+        </select>
       </div>
     </div>
-      <div class="form-row">
-        <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
-          <button class="btn btn-primary btn-add" type="submit" name="action">Edit Recipe</button>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-           <a class="btn btn-primary btn-cancel" onclick="history.go(-1)">Cancel</a>
-        </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+      <label for="cuisine">Cuisine Type: </label>
+      <input type="text" class="form-control" name="cuisine" id="cuisine" placeholder="{{recipe.cuisine_name}}" value="{{recipe.cuisine_name}}">
+    </div>
+    <div class=" col-sm-12 col-md-12 col-lg-4 form-group">
+      <label for="allergens">Allergens:</label>
+      <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Please choose... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
+      <div class="collapse" id="collapseAllergen">
+        <!-- iterates through allergen_names in allergen collection and boxes appear checked if the recipe contains certain allergens-->
+        {% for allergen in allergens %} 
+          {% if allergen.allergen_name in recipe.allergens %}
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name" checked>
+              <label class="form-check-label" for="{{allergen.allergen_name}}"> {{allergen.allergen_name}}</label>
+            </div>
+          {% else %}
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name">
+              <label class="form-check-label" for="{{allergen.allergen_name}}"> {{allergen.allergen_name}}</label>
+            </div>
+          {% endif %} 
+        {% endfor %}
       </div>
-  </form>
+    </div>
+  </div>
+  <div class="form-row" id="ingredients-row">
+    <div class="col-sm-12 col-md-12 col-lg-12 form-group">
+      <label for="ingredients">Ingredients: </label> 
+      <!-- each ingredient displayed in individual input fields -->
+      {% for ingredient in recipe.ingredients %}
+        <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}"> 
+      {% endfor %}
+      <!-- buttons allowing to adding / removing input elements -->
+          <button type="button" class="new-input-btn"><i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          <button type="button" class="remove-input-btn"><i class="fa fa-minus" aria-hidden="true"></i>
+          </button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-sm-12 col-md-12 col-lg-12 form-group">
+      <label for="instructions">Instructions: </label>
+      <textarea class="form-control" name="instructions" id="instructions" value="{{recipe.instructions}}" rows="8">{{recipe.instructions}}</textarea>
+    </div>
+  </div>
+  <div class="form-row">
+    <!-- button to submit updated recipe to database -->
+    <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
+      <button class="btn btn-primary btn-add" type="submit" name="action">Edit Recipe</button>
+    </div>
+    <!-- cancel button to undo any changes and return to previous page -->
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <a class="btn btn-primary btn-cancel" onclick="history.go(-1)">Cancel</a>
+    </div>
+  </div>
+</form>
 {% endblock %}

@@ -8,6 +8,7 @@
                 <label for="course">Filter by course: </label>
                 <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCourse">
+                    <!--iterates through course collection and allows the selction of course(s) using check box(es)-->
                     {% for course in courses %}
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="{{course.course_name}}" name="course" id="course">
@@ -21,6 +22,7 @@
                 <label for="cuisine">Filter by cuisine: </label>
                 <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">Choose Cuisine... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCuisine">
+                     <!--iterates through cuisine collection and allows the selction of cuisine(s) using check box(es)-->
                     {% for cuisine in cuisine %}
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="{{cuisine.cuisine_name}}" name="cuisine" id="cuisine">
@@ -44,6 +46,7 @@
                 </div> 
             </div>
         </div>
+        <!-- buttons to apply / reset filters -->
         <div class="form-row">
             <div class="col-sm-6 col-md-6 offset-lg-3 col-lg-3">
                 <button class="btn btn-primary btn-filter" type="Submit">Filter Recipes</button> 
@@ -55,7 +58,7 @@
     </form>   
 </div>
 <div classs="row">
-    <!-- iterates through recipes in the database and displays name and a picture for each -->
+    <!-- iterates through recipes in the database and displays recipe name, course name,cuisine name and a picture for each recipe-->
     {% for recipe in recipes %}
         <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
             <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
