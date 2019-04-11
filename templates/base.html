@@ -37,38 +37,16 @@
     </div>
     <footer class="footer">
       <div class="row">
-          <div class="col-sm-10 offset-sm-1 offset-md-3 col-md-6 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4">
+        <div class="col-sm-10 offset-sm-1 offset-md-3 col-md-6 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4">
             <span class="icon"><a href ="https://pages.github.com/" target="_blank"><i class="fab fa-github"></i></a> </span>
             <span class="icon"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
             <span class="icon"><a href="https://www..facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a></span>
             <span class="icon"><a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter-square"></i></a></span>
-          </div>
+        </div>
       </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"                                                          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function(){
-          $(".navbar-nav").click(function() {
-              $(".navbar-collapse").collapse("toggle")
-          });
-          $(".new-input-btn").on('click', function(){
-            $('<input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="20g plain flour sieved" required >').insertBefore(".new-input-btn");
-          });
-          $(".remove-input-btn").on('click', function(){
-              $('#ingredients-row input:last').remove();
-          });
-          $(".new-recipe").submit(function(){
-              alert("Thank you! Your recipe has been added.");
-          });
-          $(".edit-recipe").submit(function(){
-              alert("Thank you! This recipe has now been updated.");
-          });
-          $(".btn-filter").attr("disabled", true)
-            $(".form-check-input").change(function(){
-              $(".btn-filter").attr("disabled", $(".form-check-input").length == 0)
-          });
-      });
-    </script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
    </body> 
 </html>
