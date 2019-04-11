@@ -76,13 +76,13 @@ When a user first opens my appication they are able to view and scroll through a
 * Jinja was used for rendering the templates
 
 ## Deployment
-This application was developed entirely in Cloud9 and was deployed using Heroku. A live version of the site can be found [here](https://online-cookbook4.herokuapp.com/). Version control was done using git.With each change being added and committed to git.  
-To deploy the application to Heroku, I connected my Heroku app to the relevant GitHub repository to allow for automatic deploys from the GitHub master branch. I stored the MONGO_URI string and DATABASE_NAME as environment variables, that are accessed using os.getenv() method, and I set debug mode to False. 
+This application was developed entirely in Cloud9 and was deployed using Heroku. A live version of the site can be found [here](https://online-cookbook4.herokuapp.com/). Version control was done using git. 
+To deploy the application to Heroku, I connected my Heroku app to the relevant GitHub repository to allow for automatic deploys from the GitHub master branch. I stored the MONGO_URI string and DATABASE_NAME as environment variables that are accessed using the os.getenv() method and I set debug mode to False. 
 
 
 
 ## Testing
-My CSS file was tested using teh Jigsaw validator and no errors wer found. 
+My CSS file was tested using the Jigsaw validator and no errors were found. 
 
 <p>
     <a href="http://jigsaw.w3.org/css-validator/check/referer">
@@ -99,9 +99,23 @@ My CSS file was tested using teh Jigsaw validator and no errors wer found.
     </a>
 </p>
 
-testing each piece of functionality as went along. Fill in form one field at a time
-checking add/remove ingredient button as code was updated. 
-Application was examined on a number of screen sizes using the brower's dev tools. 
+This app ws developed on the Firefox browser and each new piece of functionality was tested as it was being developed. After creating the 'Add Recipe' and 'Edit Recipe' forms I filled in each form and submitted recipes to the database through the frontend. 
+I also posted a link to my site in the Slack forums and asked my coursemates to test it. It was brought to my attention that there was an issue when submitting the 'Edit Recipe' form. This was quickly sorted out when I discovered that I had renamed some variables in my app.py file and hadn't updated the HTML to reflect that. 
+I also made sure all the buttons worked and that there were no broken links. 
+The application was examined on a number of screen sizes using the brower's dev tools. It looks well on:
+* 720p HD Television
+* Galaxy Note9
+* Galaxy S9
+* iPad
+* iPad Mini
+* iPad 10.5 inch
+* iPhone X/XS
+* Kindle Fire HDX
+* Laptop with HIiDPI
+* Laptop with MDPI
+* Laptop with touch
+* Nexus 10
+
 
 ## Credits
 
@@ -118,11 +132,16 @@ All of the recipes on my database and add by me, through the front end were obta
 
 The code for sorting the recipes on my Home Page I got from [stackoverflow](https://stackoverflow.com/questions/43472561/mongodb-sort-the-result-after-limit)
 
-All recipes add by me, either directly into MongoDB or through the front end when testing, were obtained from [bbc food](https://www.bbc.com/food) and are used for educational purposes only, in line with permissions given on their site. 
+All recipes that I added, either directly into MongoDB or through the front end when testing, were obtained from [bbc food](https://www.bbc.com/food) and are used for educational purposes only. 
 
 The code to disable the Filter Recipes button unless at least one check box has been selected was found [here](https://www.askingbox.com/tutorial/jquery-disable-submit-button-if-no-checkbox-is-selected)
 
+Thank you to my fellow coursemate Tim Nelson for providng the following code:
+$('#ingredients-row input:last').remove();
+that helped solve an issue whereby the 'remove-input-btn' was removing the first element of the ingredients list instead of the last. 
+
 #### Media
-The header image in my header I got from [pixabay](https://pixabay.com/photos/ingredients-cooking-preparation-498199/)
+The image in my header I got from [pixabay](https://pixabay.com/photos/ingredients-cooking-preparation-498199/)
 
 #### Acknowledgements
+
