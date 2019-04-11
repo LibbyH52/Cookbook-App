@@ -56,7 +56,7 @@
             $('<input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="20g plain flour sieved" required >').insertBefore(".new-input-btn");
           });
           $(".remove-input-btn").on('click', function(){
-              $('#ingredient').remove();
+              $('#ingredients-row input:last').remove();
           });
           $(".new-recipe").submit(function(){
               alert("Thank you! Your recipe has been added.");
@@ -67,7 +67,7 @@
           $(".btn-filter").attr("disabled", true)
             $(".form-check-input").change(function(){
               $(".btn-filter").attr("disabled", $(".form-check-input").length == 0)
-            });
+          });
       });
     </script>
    </body> 
