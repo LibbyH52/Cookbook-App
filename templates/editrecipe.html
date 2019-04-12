@@ -79,12 +79,12 @@
       <label for="ingredients">Ingredients: </label> 
       <!-- each ingredient displayed in individual input fields -->
       {% for ingredient in recipe.ingredients %}
-        <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}"> 
+        <input type="text" class="form-control edit-ingredient" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}"> 
       {% endfor %}
       <!-- buttons allowing to adding / removing input elements -->
-          <button type="button" class="new-input-btn"><i class="fa fa-plus" aria-hidden="true"></i>
+          <button type="button" class="new-input-btn btn-ingredient"><i class="fa fa-plus" aria-hidden="true"></i>
             </button>
-          <button type="button" class="remove-input-btn"><i class="fa fa-minus" aria-hidden="true"></i>
+          <button type="button" class="remove-input-btn btn-ingredient"><i class="fa fa-minus" aria-hidden="true"></i>
           </button>
     </div>
   </div>
@@ -97,7 +97,7 @@
   <div class="form-row">
     <!-- button to submit updated recipe to database -->
     <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
-      <button class="btn btn-primary btn-add" type="submit" name="action">Edit Recipe</button>
+      <button class="btn btn-primary btn-add" type="submit" name="action">Save Changes</button>
     </div>
     <!-- cancel button to undo any changes and return to previous page -->
     <div class="col-sm-12 col-md-6 col-lg-3">
