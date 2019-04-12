@@ -1,71 +1,67 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
 {% block content %}
-<div class="recipe-container">
-    <div class="row">
-        <div class="col-sm-8 col-d-6">
-            <!-- button to go back to previous page -->
-            <a class="btn btn-outline-primary back-btn" onclick="history.go(-1)">Go back to search results</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
-            <h4 class="recipe-info">{{recipe.author}}'s</h4>
-            <h3 class="recipe-heading">{{recipe.recipe_name}}</h3>
-        </div>
-    </div>
-    <div class-"row">
-        <div class="col-sm-8 offset-sm-2 recipe-info">
-            course: {{recipe.course_name}}
-        </div>
-        <div class="col-sm-8 offset-sm-2 recipe-info">
-            cuisine: {{recipe.cuisine_name}}
-        </div> 
-        <div class="col-sm-8 offset-sm-2 recipe-info">
-            preptime: {{recipe.prep_time}}
-        </div> 
-        <div class="col-sm-8 offset-sm-2 recipe-info">
-            cooktime: {{recipe.cook_time}}
-        </div> 
-        <div class="col-sm-8 offset-sm-2 recipe-info">
-            serves: {{recipe.servings}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 offset-lg-1 col-lg-10">
-            <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}"> 
-        </div>
-        <div class="col-sm-12 offset-lg-2 col-lg-8">
-            allergens:
-            {% for allergen in recipe.allergens %}
-                <strong>{{allergen}}, </strong>
-            {% endfor %} 
-        </div>
-    </div>
-    <div class="row recipe-row">
-        <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-0 col-lg-5 details-col">
-            <h4 class="recipe-heading">Ingredients</h4>
-            <ul>
-            <!--iterates through theallergens array and displays one at a time-->
-                {% for ingredient in recipe.ingredients %}
-                    <li class="recipe_ingredient">{{ingredient}} </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="col-sm-12 offset-lg-1 col-lg-6 details-col">
-            <h4 class="recipe-heading">Preparation: </h4>
-                {{recipe.instructions}} 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
-            <!-- function name and recipe to  allow for editing recipe-->
-            <a class="btn btn-primary btn-edit" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit Recipe</a>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <a class="btn btn-primary btn-delete" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" role="button">Delete Recipe</a>
-        </div>
+<div class="row">
+    <div class="col-sm-4 col-md-2 col-lg-2">
+        <!-- button to go back to previous page -->
+        <a class="btn btn-outline-primary back-btn" onclick="history.go(-1)">Back to search results</a>
     </div>
 </div>
-        
+<div class="row">
+    <div class="col-sm-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+        <h4 class="recipe-info">{{recipe.author}}'s</h4>
+        <h3 class="recipe-heading">{{recipe.recipe_name}}</h3>
+    </div>
+</div>
+<div class- "row">
+    <div class="col-sm-8 offset-sm-2 recipe-info">
+        course: {{recipe.course_name}}
+    </div>
+    <div class="col-sm-8 offset-sm-2 recipe-info">
+        cuisine: {{recipe.cuisine_name}}
+    </div>
+    <div class="col-sm-8 offset-sm-2 recipe-info">
+        preptime: {{recipe.prep_time}}
+    </div>
+    <div class="col-sm-8 offset-sm-2 recipe-info">
+        cooktime: {{recipe.cook_time}}
+    </div>
+    <div class="col-sm-8 offset-sm-2 recipe-info">
+        serves: {{recipe.servings}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 offset-lg-2 col-lg-8">
+        <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}">
+    </div>
+    <div class="col-sm-12 offset-lg-2 col-lg-8">
+        allergens: {% for allergen in recipe.allergens %}
+        <strong>{{allergen}}, </strong> {% endfor %}
+    </div>
+</div>
+<div class="row recipe-row">
+    <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-0 col-lg-5 details-col">
+        <h4 class="recipe-heading">Ingredients</h4>
+        <ul>
+            <!--iterates through theallergens array and displays one at a time-->
+            {% for ingredient in recipe.ingredients %}
+            <li class="recipe_ingredient">{{ingredient}} </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-sm-12 offset-lg-1 col-lg-6 details-col">
+        <h4 class="recipe-heading">Preparation: </h4>
+        {{recipe.instructions}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6 offset-lg-3 col-lg-3">
+        <!-- function name and recipe to  allow for editing recipe-->
+        <a class="btn btn-primary btn-edit" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit Recipe</a>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+        <a class="btn btn-primary btn-delete" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" role="button">Delete Recipe</a>
+    </div>
+</div>
+
+
 {% endblock %}
