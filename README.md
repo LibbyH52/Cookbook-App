@@ -59,6 +59,12 @@ When a user first opens my appication they are able to view and scroll through a
 ## Features
 
 #### Existing Features
+The first page of my application displays the recipes which have been read in from Mongodb and sorted alphabetically by cuisine type and within that by course name. There is a Navbar at the top which allows the user to add a recipe or go back to the Home Page. There is also the option to filter recipes based on course name, cuisine type or exclude recipes that contain specific allergens. When the recipes have been filtered this can be undone by clicking on the 'Reset Filters' button, or clicking on the 'Home' link in the navbar. 
+The user can view a recipe by clicking on a recipe card of their choice. They are then taken to a page that displays the full recipe and provides the user with the option of editing or deleting the recipe. There is also link to take them back to the previous page. 
+If the user chooses to edit the recipe they will be taken to a page individual aspects of the recipe are contained within form fields. When a user is finished editing they can submit the updated recipe by clicking on the 'Save Changes' button or undo these changes by clicking 'Cancel' Choosing to 'Save changes' will recult in a popup window appearing to inform the user that the recipe has been updated and will redirect them back to the home page where they can view the edited recipe. Cancel will take the user back to the previous page. 
+When a user clicks on the 'Add a Recipe' link in the navbar they will be taken to a page containing a blank form to allow them to submit a new recipe by completing the required fields. At the end of the form there are two buttons 'Add Recipe' or cancel. Clicking on 'Add Recipe' causes a popup window informing the user that their recipe has been added, and they are then taken back to the Home Page where the new recipe can be viewed. Choosing to cancel will undo take the user back to the previous page and will no change will be made to the database. Both the 'Edit Recipe' and 'Add Recipe' forms contain plus and minus buttons that allow the user to dynamically add or remove recipe ingredients. 
+
+
 #### Features Left to Implement
 
 ## Technologies Used
@@ -130,9 +136,9 @@ All recipes that I added, either directly into MongoDB or through the front end 
 
 The code to disable the Filter Recipes button unless at least one check box has been selected was found [here](https://www.askingbox.com/tutorial/jquery-disable-submit-button-if-no-checkbox-is-selected)
 
-Thank you to my fellow coursemate Tim Nelson for providng the following code:
+Thank you to my fellow coursemate Tim Nelson for providing the following code:
 $('#ingredients-row input:last').remove();
-that helped solve an issue whereby the 'remove-input-btn' was removing the first element of the ingredient list instead of the last. 
+that helped ensure that the 'remove-input-btn' was removing the last element of the ingredient, and not the first. 
 
 #### Media
 The image in my header I got from [pixabay](https://pixabay.com/photos/ingredients-cooking-preparation-498199/)
