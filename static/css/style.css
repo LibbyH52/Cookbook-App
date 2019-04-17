@@ -55,6 +55,7 @@ h3 {
     text-align: center;
 }
 h4{
+    color: #003f5c;
     font-size: 1.25em;
     text-align: center;
 }
@@ -68,6 +69,18 @@ h5 {
     font-weight: 800;
     font-variant: small-caps;
 }
+
+.modal-header h4{
+    color: #ffffff;
+    font-variant: small-caps;
+    font-weight: 800;
+    
+}
+
+.modal-header{
+    background-color: #003f5c;
+}
+
 
 /***********************************button styles*/
 
@@ -129,16 +142,25 @@ h5 {
 }
 
 .btn-cancel, 
-.btn-cancel:hover,
-.btn-cancel:focus,
 .btn-cancel:active,
-.btn-cancel:active:focus{
+.btn-cancel:active:focus
+.btn-cancel:focus,
+.btn-cancel:hover{
     background-color: #a05195;
     border: 1px solid #a05195;
 }
 
 .btn-ingredient{
     margin-top: 5px;
+}
+
+.close,
+.close:active,
+.close:active:focus,
+.close:focus,
+.close:hover{
+    color: #ffffff;
+    font-weight: bolder;
 }
 
 /**************************style for recipe cards*/
