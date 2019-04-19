@@ -27,23 +27,28 @@ def browse_recipes():
     cuisine = mongo.db.cuisine.find()
     recipes = mongo.db.recipes.find()
     allergens = mongo.db.allergens.find()
-    filters=list()
+    filters = {}
     if request.method == "POST":
-        course = request.form.getlist("course")
-        cuisine = request.form.getlist('cuisine')
+        course = request.form.get("course")
+        if not course == None:
+            filters["course_name"] = course
+        cuisine = request.form.get("cuisine")
+        if not cuisine == None:
+            filters["cuisine_name"] = cuisine
+        print(filters)
         allergens = request.form.getlist("allergen")
-        
-        filter_recipes=mongo.db.recipes.find({"$or": [
-            {"$and": [ {"course_name" :{"$in" : course}}, {"cuisine_name" :{"$in" : cuisine }}, {"allergens" : { "$nin": allergens }} ]}
-            ]}
-        )
-    
-        
+        print(allergens)
+      
+      
+        filter_recipes = mongo.db.recipes.find(
+            filters)
+            
+         
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:
         recipes = mongo.db.recipes.aggregate([
-                {"$sort": {"course_name": pymongo.DESCENDING}},
-                {"$sort": {"cuisine_name": pymongo.ASCENDING}}
+                {"$sort": {"course_name": -1}},
+                {"$sort": {"cuisine_name": 1}}
         ])
       
         return render_template('browserecipes.html', recipes=recipes, courses=courses, cuisine=cuisine, allergens=allergens)

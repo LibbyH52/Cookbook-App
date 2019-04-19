@@ -8,11 +8,11 @@
                 <label for="course">Filter by course: </label>
                 <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCourse">
-                    <!--iterates through course collection and allows the selction of course(s) using check box(es)-->
+                    <!--iterates through course collection and allows the selction of course using radio button-->
                     {% for course in courses %}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{course.course_name}}" name="course" id="course">
-                            <label class="form-check-label" for="{{course.course_name}}">{{course.course_name}}
+                        <div class="form-radio">
+                            <input class="form-radio-input" type="radio" value="{{course.course_name}}" name="course" id="course">
+                            <label class="form-radio-label" for="{{course.course_name}}">{{course.course_name}}
                                 </label>
                         </div>
                     {% endfor %}
@@ -24,9 +24,9 @@
                 <div class="collapse" id="collapseCuisine">
                      <!--iterates through cuisine collection and allows the selction of cuisine(s) using check box(es)-->
                     {% for cuisine in cuisine %}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{cuisine.cuisine_name}}" name="cuisine" id="cuisine">
-                            <label class="form-check-label" for="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}
+                        <div class="form-radio">
+                            <input class="form-radio-input" type="radio" value="{{cuisine.cuisine_name}}" name="cuisine" id="cuisine">
+                            <label class="form-radio-label" for="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}
                             </label>
                         </div>
                     {% endfor %}
@@ -49,7 +49,7 @@
          <!-- buttons to apply / reset filters-->
         <div class="form-row">
             <div class="col-sm-6 col-md-6 offset-lg-3 col-lg-3">
-                <button class="btn btn-primary btn-filter" type="Submit">Filter Recipes</button> 
+                <button class="btn btn-primary btn-filter" id="btn-filter" type="Submit">Filter Recipes</button> 
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3">
                 <a href="{{url_for('browse_recipes', recipes=all_recipes)}}" class="btn btn-primary btn-cancel">Reset Filters</a>
