@@ -11,7 +11,7 @@
                     <!--iterates through course collection and allows the selction of course using radio button-->
                     {% for course in courses %}
                         <div class="form-radio">
-                            <input class="form-radio-input" type="radio" value="{{course.course_name}}" name="course" id="course">
+                            <input class="form-input" type="radio" value="{{course.course_name}}" name="course" id="course">
                             <label class="form-radio-label" for="{{course.course_name}}">{{course.course_name}}
                                 </label>
                         </div>
@@ -25,7 +25,7 @@
                      <!--iterates through cuisine collection and allows the selction of cuisine(s) using check box(es)-->
                     {% for cuisine in cuisine %}
                         <div class="form-radio">
-                            <input class="form-radio-input" type="radio" value="{{cuisine.cuisine_name}}" name="cuisine" id="cuisine">
+                            <input class="form-input" type="radio" value="{{cuisine.cuisine_name}}" name="cuisine" id="cuisine">
                             <label class="form-radio-label" for="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}
                             </label>
                         </div>
@@ -34,11 +34,11 @@
             </div>
             <div class="col-sm-12 offset-md-3 col-md-6 offset-lg-0 col-lg-4 form-group">
                 <label for="basic-url">Exclude Allergens:</label>
-                <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Choose allergens...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
+                <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Free From...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseAllergen">
                     {% for allergen in allergens %}
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name">
+                            <input class="form-input" type="checkbox" value="{{allergen.allergen_name}}" name="allergen" id="allergen_name">
                             <label class="form-check-label" for="{{allergen.allergen_name}}">{{allergen.allergen_name}}
                                 </label>
                         </div>
