@@ -41,9 +41,9 @@ def browse_recipes():
       
       
         filter_recipes = mongo.db.recipes.find({"$and": [filters, {"allergens": {"$nin": allergens}}]})
-        print(filter_recipes)  
-         
-        return render_template('browserecipes.html', recipes=filter_recipes)
+        filter_recipes_count = filter_recipes.count() 
+        print(filter_recipes_count)
+        return render_template('browserecipes.html', recipes=filter_recipes, count=filter_recipes_count)
     else:
         recipes = mongo.db.recipes.aggregate([
                 {"$sort": {"course_name": -1}},

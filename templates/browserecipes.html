@@ -4,7 +4,7 @@
 <div class="row">
     <form action="/browse_recipes" class="form-filters" method="POST">
         <div class="form-row">
-            <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+            <div class="col-sm-8 offset-sm-2 offset-md-0 col-md-6 col-lg-4 form-group">
                 <label for="course">Filter by course: </label>
                 <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCourse">
@@ -18,7 +18,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+            <div class="col-sm-8 offset-sm-2 offset-md-0 col-md-6 col-lg-4 form-group">
                 <label for="cuisine">Filter by cuisine: </label>
                 <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">Choose Cuisine... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCuisine">
@@ -32,7 +32,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-sm-12 offset-md-3 col-md-6 offset-lg-0 col-lg-4 form-group">
+            <div class="col-sm-8 offset-sm-2 offset-md-3 col-md-6 offset-lg-0 col-lg-4 form-group">
                 <label for="basic-url">Exclude Allergens:</label>
                 <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Free From...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseAllergen">
@@ -59,6 +59,11 @@
 </div>
 <div classs="row">
     <!-- iterates through recipes in the database and displays recipe name, course name,cuisine name and a picture for each recipe-->
+    {% if count == 0 %}
+    <div class="col-sm-10 offset-sm-1 offset-md-2 col-md-8 offset-lg-2 col-lg-8 no-results">
+         There are currently no recipes matching your search query. Please try again.
+    </div>
+    {% endif %}
     {% for recipe in recipes %}
         <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
             <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
