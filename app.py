@@ -40,9 +40,8 @@ def browse_recipes():
         print(allergens)
       
       
-        filter_recipes = mongo.db.recipes.find(
-            filters)
-            
+        filter_recipes = mongo.db.recipes.find({"$and": [filters, {"allergens": {"$nin": allergens}}]})
+        print(filter_recipes)  
          
         return render_template('browserecipes.html', recipes=filter_recipes)
     else:

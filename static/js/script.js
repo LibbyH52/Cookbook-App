@@ -14,8 +14,6 @@
           $(".edit-recipe").submit(function(){
               alert("Thank you! This recipe has now been updated.");
           });
-         $('.btn-filter').attr("disabled",true);
-            $('.form-check-input').change(function() {
-            $('.btn-filter').attr('disabled', $('.form-check-input:checked').length == 0);
-        });
+         /*$('.btn-filter').prop("disabled", true);*/
+            
      });
