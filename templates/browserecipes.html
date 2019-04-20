@@ -5,8 +5,8 @@
     <form action="/browse_recipes" class="form-filters" method="POST">
         <div class="form-row">
             <div class="col-sm-8 offset-sm-2 offset-md-0 col-md-6 col-lg-4 form-group">
-                <label for="course">Filter by course: </label>
-                <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
+                <label for="course" class="filter-label">Filter by course: </label>
+                <button class="btn btn-outline-primary dropdown-filters" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCourse">
                     <!--iterates through course collection and allows the selction of course using radio button-->
                     {% for course in courses %}
@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="col-sm-8 offset-sm-2 offset-md-0 col-md-6 col-lg-4 form-group">
-                <label for="cuisine">Filter by cuisine: </label>
-                <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">Choose Cuisine... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
+                <label for="cuisine" class="filter-label">Filter by cuisine: </label>
+                <button class="btn btn-outline-primary dropdown-filters" type="button" data-toggle="collapse" data-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">Choose Cuisine... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCuisine">
                      <!--iterates through cuisine collection and allows the selction of cuisine(s) using check box(es)-->
                     {% for cuisine in cuisine %}
@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class="col-sm-8 offset-sm-2 offset-md-3 col-md-6 offset-lg-0 col-lg-4 form-group">
-                <label for="basic-url">Exclude Allergens:</label>
-                <button class="btn btn-outline-primary btn-allergen" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Free From...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
+                <label for="allergen" class="filter-label">Exclude Allergens:</label>
+                <button class="btn btn-outline-primary dropdown-filters" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Free From...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseAllergen">
                     {% for allergen in allergens %}
                         <div class="form-check">

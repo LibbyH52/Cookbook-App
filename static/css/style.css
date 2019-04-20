@@ -162,12 +162,36 @@ h5 {
     color: #ffffff;
     font-weight: bolder;
 }
+
+.dropdown-filters,
+.dropdown-filters:active,
+.dropdown-filters:active:focus,
+.dropdown-filters:focus,
+.dropdown-filters:hover{
+    background-color: #ffffff;
+    border-color: grey;
+    color: #003f5c;
+    height: 36px;
+    width: 90%;
+    margin: 0 5%;
+}
 /*******************************browse recipe page*/
+
+.collapse{
+    width: 90%;
+    margin: 0 5%;
+}
 .no-results{
     color: #003f5c;
     font-size: 1.5em;
     padding: 2em 1em;
 }
+
+.filter-label{
+    width: 90%;
+    margin: 1% 5%;
+}
+
 /**************************style for recipe cards*/
 
 .loop-item {
@@ -303,6 +327,21 @@ footer a:visited {
         min-height: 440px;
         width: 45%;
     }
+    
+    .collapse{
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .dropdown-filters{
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .filter-label{
+        width: 100%;
+        margin: 0 auto;
+}
     
 }
 
