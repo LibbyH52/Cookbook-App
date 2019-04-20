@@ -333,7 +333,11 @@ footer a:visited {
         margin: 0 auto;
     }
     
-    .dropdown-filters{
+    .dropdown-filters,
+    .dropdown-filters:active,
+    .dropdown-filters:active:focus,
+    .dropdown-filters:focus,
+    .dropdown-filters:hover{
         width: 100%;
         margin: 0 auto;
     }
