@@ -9,14 +9,7 @@ header{
     height: 60vh;
 }
 /****************************************nav styles*/
-.navbar .navbar-brand{
-    color: #ffffff;
-    font-size: 1.5em;
-}
-.navbar .navbar-brand:hover{
-    color: #ffffff;
-    font-weight: 800;
-}
+
 .navbar-nav .nav-item .nav-link{
     color: #ffffff;
     font-size: 1.5em;
@@ -32,6 +25,7 @@ header{
     height: 2em;
     width: 2em;
 }
+
 /***********************************heading styles*/
 
 h1 {
@@ -108,14 +102,16 @@ h5 {
     background-color: #2f4b7c;
 }
 
-.back-btn,
-.back-btn:hover,
-.back-btn:focus,
-.back-btn:active,
-.back-btn:active:focus{
-    background-color: #ffffff !important;
+.btn-back,
+.btn-back:hover,
+.btn-back:focus,
+.btn-back:active,
+.btn-back:active:focus{
+    background-color: #ffffff;
     border: 1px solid #665191;
+    margin-top: 1em;
     margin-bottom: 2em;
+    width: 100%;
 }
 
 .btn-add,
@@ -203,6 +199,7 @@ h5 {
 .loop-item a:hover{
     text-decoration: none;
 }
+
 .card {
     color: #444e86;
     margin-top: 20px;
@@ -254,6 +251,7 @@ label{
 }
 
 /*******************styles for Display Recipe Page*/
+
 .recipe-container{
     padding: 2em 0;
 }
@@ -345,7 +343,7 @@ footer a:visited {
     .filter-label{
         width: 100%;
         margin: 0 auto;
-}
+    }
     
 }
 
@@ -366,7 +364,18 @@ footer a:visited {
     .btn-allergen{
         width: 100%;
     }
+    
     label {
         font-size: 1.5em;
     }
+    
+    .dropdown-filters,
+    .dropdown-filters:active,
+    .dropdown-filters:active:focus,
+    .dropdown-filters:focus,
+    .dropdown-filters:hover{
+        width: 100%;
+        margin: 0 0.75em;
+    }
+    
 }
