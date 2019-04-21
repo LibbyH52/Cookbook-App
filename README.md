@@ -59,10 +59,26 @@ This is site was designed to allow users to view, edit and add new reipces. The 
 ## Features
 
 #### Existing Features
-The first page of my application displays all recipes which are sorted alphabetically by cuisine type and within that by course name. There is a Navbar at the top that allows the user to add a recipe or go back to the Home Page. There is also the option to filter recipes based on course name, cuisine type or exclude recipes that contain specific allergens. When the recipes have been filtered this can be undone by clicking on the 'Reset Filters' button, or clicking on the 'Home' link in the navbar. 
+
+* Navbar 
+There is a Navbar at the top of each page that allows the user to click on a link to add a recipe or go back to the Home Page. 
+
+* Browse Recipes Page
+
+The first page of my application displays all the recipes in the database which are sorted alphabetically by cuisine type and within that by course name. There is also the option to filter recipes based on course name, cuisine type or exclude recipes that contain specific allergens. These filters can be applied individually or collectively. When the recipes have been filtered this can be undone by clicking on the 'Reset Filters' button, or clicking on the 'Home' link in the navbar. 
+
+* Display Recipe
+
 The user can view a recipe by clicking on a recipe card of their choice. They are then taken to a page that displays the full recipe and provides the user with the option of editing or deleting the recipe. There is also link to take them back to the previous page. Clicking on the "Delete Recipe" button will result in a popup modal being dispalyed asking the user to confirm that they want to delete that particular recipe. If confirmation is received the recipe is removed from the database and the user is redirected to the Home Page where they can see that the recipe has in fact been deleted. 
+
+* Edit Recipe
+
 If the user chooses to edit the recipe they will be taken to a page where individual aspects of the recipe are contained within form fields. When a user is finished editing they can submit the updated recipe by clicking on the 'Save Changes' button or undo these changes by clicking 'Cancel'. Choosing to 'Save changes' will result in a popup window appearing to inform them that the recipe has been updated and will redirect them back to the Home Page where they can view the edited recipe. Canceling this action will take the user back to the previous page. 
+
+* Add a Recipe
+
 When a user clicks on the 'Add a Recipe' link in the navbar they will be taken to a page containing a blank form so the data can be submitted in a format that is acceptable to MongoDB. At the end of the form there are two buttons - 'Add Recipe' or 'Cancel'. Clicking on 'Add Recipe' causes a popup window to appear informing the user that their recipe has been added to the database, and they are taken back to the Home Page where the new recipe can be viewed. Choosing to Cancel will undo all changes and  take the user back to the previous page. 
+
 Both the 'Edit Recipe' and 'Add Recipe' forms contain plus and minus buttons that allow the user to dynamically add or remove recipe ingredients. 
 
 
@@ -75,9 +91,21 @@ Both the 'Edit Recipe' and 'Add Recipe' forms contain plus and minus buttons tha
 * Jinja was used for rendering the templates
 
 ## Deployment
-This application was developed entirely in Cloud9 and was deployed using Heroku. A live version of the site can be found [here](https://online-cookbook4.herokuapp.com/). Version control was done using git. 
-To deploy the application to Heroku, I connected my Heroku app to the relevant GitHub repository to allow for automatic deploys from the GitHub master branch. 
-For production I stored the MONGO_URI string and DATABASE_NAME as environment variables and accessed them using the os.getenv() method and I set debug to False. 
+This application was developed entirely in Cloud9 and was deployed to Heroku. A live version of the site can be found [here](https://online-cookbook4.herokuapp.com/). Version control was done using git. 
+To deploy the application to Heroku, I created an app with a unique name and it to the relevant GitHub repository to allow for automatic deploys from the GitHub master branch. I added and committed files to git each time I completed a new piece of functionality.I used the following command to create file containing a list of the files that Heroku requires to run the application: 
+    sudo pip3 freeze --local > requirements
+I also create a Procfile using the following command:
+    echo web: python3 app.py > Procfile
+I then added, committed and pushed both of this files to Git Hub. 
+I used the settings tab in Heroku to set the IP address and Port as config variables.
+For production I also stored the MONGO URI string and DATABASE NAME as config variables  and accessed them using the os.getenv() method and I set debug to False. I used the following piece of code in my app.py file to access those variables:
+    if app.config["DEBUG"] == True:
+        import config
+        app.config['MONGO_URI'] = config.MONGO_URI
+        app.config['DB_NAME'] = config.DB_NAME
+    else:
+        app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+        app.config["DB_NAME"] = os.getenv("DB_NAME")
 
 ## Testing
 My CSS file was tested using the Jigsaw validator and no errors were found. 
