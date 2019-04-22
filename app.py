@@ -36,8 +36,6 @@ def browse_recipes():
         if not recipe_cuisine == None:
             filters["cuisine_name"] = recipe_cuisine
         recipe_allergens = request.form.getlist("allergen")
-
-      
       
         filter_recipes = mongo.db.recipes.find({"$and": [filters, {"allergens": {"$nin": recipe_allergens}}]})
         filter_recipes_count = filter_recipes.count() 
