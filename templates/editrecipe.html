@@ -79,7 +79,7 @@
       <label for="ingredients">Ingredients: </label> 
       <!-- each ingredient displayed in individual input fields -->
       {% for ingredient in recipe.ingredients %}
-        <input type="text" class="form-control edit-ingredient" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}"> 
+        <input type="text" class="form-control ingredient" name="ingredient" id="ingredient" placeholder="{{ingredient}}" value="{{ingredient}}"> 
       {% endfor %}
       <!-- buttons allowing to adding / removing input elements -->
           <button type="button" class="new-input-btn btn-ingredient"><i class="fa fa-plus" aria-hidden="true"></i>

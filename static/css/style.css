@@ -246,8 +246,8 @@ label{
     color: #ffa600;
 }
 
-.edit-ingredient{
-    padding: 5px;
+.ingredient{
+    margin: 5px 0;
 }
 
 /*******************styles for Display Recipe Page*/
@@ -327,8 +327,8 @@ footer a:visited {
     }
     
     .collapse{
-        width: 100%;
-        margin: 0 auto;
+        width: 90%;
+        margin: 0 5%;
     }
     
     .dropdown-filters,
@@ -341,8 +341,8 @@ footer a:visited {
     }
     
     .filter-label{
-        width: 100%;
-        margin: 0 auto;
+        width: 90%;
+        margin: 1% 5%;
     }
     
 }

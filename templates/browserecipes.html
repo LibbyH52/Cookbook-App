@@ -4,7 +4,7 @@
 <div class="row">
     <form action="/browse_recipes" class="form-filters" method="POST">
         <div class="form-row">
-            <div class="col-sm-8 offset-sm-2 offset-md-0 col-md-6 col-lg-4 form-group">
+            <div class="col-sm-10 offset-sm-1 offset-md-0 col-md-6 col-lg-4 form-group">
                 <label for="course" class="filter-label">Filter by course: </label>
                 <button class="btn btn-outline-primary dropdown-filters" type="button" data-toggle="collapse" data-target="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">Choose Course... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCourse">
@@ -18,7 +18,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-sm-8 offset-sm-2 offset-md-0 col-md-6 col-lg-4 form-group">
+            <div class="col-sm-10 offset-sm-1 offset-md-0 col-md-6 col-lg-4 form-group">
                 <label for="cuisine" class="filter-label">Filter by cuisine: </label>
                 <button class="btn btn-outline-primary dropdown-filters" type="button" data-toggle="collapse" data-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">Choose Cuisine... <i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseCuisine">
@@ -32,7 +32,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-sm-8 offset-sm-2 offset-md-3 col-md-6 offset-lg-0 col-lg-4 form-group">
+            <div class="col-sm-10 offset-sm-1 offset-md-3 col-md-6 offset-lg-0 col-lg-4 form-group">
                 <label for="allergen" class="filter-label">Exclude Allergens:</label>
                 <button class="btn btn-outline-primary dropdown-filters" type="button" data-toggle="collapse" data-target="#collapseAllergen" aria-expanded="false" aria-controls="collapseExample">Free From...<i class="fas fa-chevron-down"></i><data-target></data-target></button>
                 <div class="collapse" id="collapseAllergen">
@@ -49,15 +49,15 @@
          <!-- buttons to apply / reset filters-->
         <div class="form-row">
             <div class="col-sm-6 col-md-6 offset-lg-3 col-lg-3">
-                <button class="btn btn-primary btn-filter" id="btn-filter" type="Submit">Filter Recipes</button> 
+                <button class="btn btn-primary btn-filter" type="Submit">Filter Recipes</button> 
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <a href="{{url_for('browse_recipes', recipes=all_recipes)}}" class="btn btn-primary btn-cancel">Reset Filters</a>
+                <button href="{{url_for('browse_recipes', recipes=all_recipes)}}" class="btn btn-primary btn-cancel">Reset Filters</button>
             </div>
         </div>
     </form>   
 </div>
-<div classs="row">
+<div class="row">
     <!-- iterates through recipes in the database and displays recipe name, course name,cuisine name and a picture for each recipe-->
     {% if count == 0 %}
     <div class="col-sm-10 offset-sm-1 offset-md-2 col-md-8 offset-lg-2 col-lg-8 no-results">
