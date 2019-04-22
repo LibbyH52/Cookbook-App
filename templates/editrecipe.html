@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 <h2>Edit recipe</h2>
 <!--displays recipe in form fields to allow for updating / editing -->
 <form action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" class="edit-recipe">
