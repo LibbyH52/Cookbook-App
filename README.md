@@ -18,6 +18,9 @@ This is site was designed to allow users to view, edit and add new reipces. The 
 
 #### Database Schema
 * Updated Schema ![updated schema](static/databaseschema/updateddatabaseschema.png/)
+ 
+User registration removed from final version of database schema.
+
 
 ##### Example from Recipes Collection
     {
