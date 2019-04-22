@@ -181,6 +181,7 @@ The image in my header was found on [pixabay](https://pixabay.com/photos/ingredi
 #### Acknowledgements
 Thank you to my fellow coursemates for their support and suggestions during the development process and for testing the (almost) finished application, specifically Miroslav Svec, Tim Nelson, Joke Heyndels and Deborah Thompson. 
 Thank you also for to my mentor Moosa Hassan for his help and suggestions throughout.
+Inspiration for this site was taken from Code Institute's Task Manager Mini-Project.
 
 
 
