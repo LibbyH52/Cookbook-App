@@ -65,25 +65,72 @@
         </div>
     {% endif %}
     {% for recipe in recipes %}
-        <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
-            <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
-            <div class="card">
-                <img class="card-img-top" src="{{recipe.image_url}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{recipe.recipe_name}}</h5>
-                    <p class="card-details"> by {{recipe.author}} </p>
+        {% if recipe.course_name == "Starter"}
+            <h2>Starters</h2>
+            <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
+                <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
+                <div class="card">
+                    <img class="card-img-top" src="{{recipe.image_url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                        <p class="card-details"> by {{recipe.author}} </p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p class="card-details">{{recipe.cuisine_name}}</p>
+                        {% if recipe.course_name == "Main" %}
+                            <p class="card-details">  {{recipe.course_name}} Course</p>
+                        {% else %}
+                            <p class="card-details">{{recipe.course_name}}</p>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="card-footer text-muted">
-                    <p class="card-details">{{recipe.cuisine_name}}</p>
-                    {% if recipe.course_name == "Main" %}
-                        <p class="card-details">  {{recipe.course_name}} Course</p>
-                    {% else %}
-                        <p class="card-details">{{recipe.course_name}}</p>
-                    {% endif %}
-                </div>
+                </a>
             </div>
-            </a>
-        </div>
+        {% endif %}
+        {% if recipe.course_name == "Main"}
+            <h2>Main Courses</h2>
+            <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
+                <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
+                <div class="card">
+                    <img class="card-img-top" src="{{recipe.image_url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                        <p class="card-details"> by {{recipe.author}} </p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p class="card-details">{{recipe.cuisine_name}}</p>
+                        {% if recipe.course_name == "Main" %}
+                            <p class="card-details">  {{recipe.course_name}} Course</p>
+                        {% else %}
+                            <p class="card-details">{{recipe.course_name}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endif %}
+        {% if recipe.course_name == "Dessert"}
+            <h2>Dessertss</h2>
+            <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
+                <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
+                <div class="card">
+                    <img class="card-img-top" src="{{recipe.image_url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{recipe.recipe_name}}</h5>
+                        <p class="card-details"> by {{recipe.author}} </p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p class="card-details">{{recipe.cuisine_name}}</p>
+                        {% if recipe.course_name == "Main" %}
+                            <p class="card-details">  {{recipe.course_name}} Course</p>
+                        {% else %}
+                            <p class="card-details">{{recipe.course_name}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
 {% endblock %}
