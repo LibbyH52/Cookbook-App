@@ -65,7 +65,7 @@
         </div>
     {% endif %}
     {% for recipe in recipes %}
-        {% if recipe.course_name == "Starter"}
+        {% if recipe.course_name == "Starter" %}
             <h2>Starters</h2>
             <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
                 <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
@@ -87,7 +87,7 @@
                 </a>
             </div>
         {% endif %}
-        {% if recipe.course_name == "Main"}
+        {% if recipe.course_name == "Main" %}
             <h2>Main Courses</h2>
             <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
                 <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
@@ -109,7 +109,7 @@
                 </a>
             </div>
         {% endif %}
-        {% if recipe.course_name == "Dessert"}
+        {% if recipe.course_name == "Dessert" %}
             <h2>Dessertss</h2>
             <div class="col-sm-12 col-md-6 col-lg-4 loop-item">
                 <a href="{{url_for('display_recipe', recipe_id=recipe._id)}}">
