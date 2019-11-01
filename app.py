@@ -55,12 +55,12 @@ def display_recipe(recipe_id):
     return render_template('displayrecipe.html', recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
 
 #selects a recipe and retreives from the database using its id and displays it in a form to allow the user to edit its properties
-# @app.route('/edit_recipe/<recipe_id>')
-# def edit_recipe(recipe_id):
-#     courses = mongo.db.course.find()
-#     #get the recipe that matches the recipe id '_id' is the key 
-#     recipe = mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
-#     return render_template("editrecipe.html", recipe=recipe, courses=courses, allergens=mongo.db.allergens.find())
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    courses = mongo.db.course.find()
+    #get the recipe that matches the recipe id '_id' is the key 
+    recipe = mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)})
+    return render_template("editrecipe.html", recipe=recipe, courses=courses, allergens=mongo.db.allergens.find())
 
 #updates the database with edited recipe
 @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
@@ -130,10 +130,10 @@ def insert_recipe():
     return redirect(url_for('browse_recipes'))
     
 #deletes a recipe
-# @app.route('/delete_recipe/<recipe_id>')
-# def delete_recipe(recipe_id):
-#     mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
-#     return redirect(url_for('browse_recipes'))
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+    return redirect(url_for('browse_recipes'))
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),
