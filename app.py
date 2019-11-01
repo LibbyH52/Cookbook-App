@@ -63,8 +63,8 @@ def display_recipe(recipe_id):
 #     return render_template("editrecipe.html", recipe=recipe, courses=courses, allergens=mongo.db.allergens.find())
 
 #updates the database with edited recipe
-# @app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
-# def update_recipe(recipe_id):
+@app.route('/update_recipe/<recipe_id>', methods=["GET", "POST"])
+def update_recipe(recipe_id):
     recipes = mongo.db.recipes
     #access recipes collection and call the update function
     recipes.update({'_id':ObjectId(recipe_id)},
@@ -89,7 +89,7 @@ def display_recipe(recipe_id):
             { "$setOnInsert": { "cuisine_name": cuisine },
             },
             upsert= True 
-        ); 
+        )
     return redirect(url_for('browse_recipes'))
     
     
@@ -126,7 +126,7 @@ def insert_recipe():
             { "$setOnInsert": { "cuisine_name": cuisine },
             },
             upsert = True 
-            ); 
+            )
     return redirect(url_for('browse_recipes'))
     
 #deletes a recipe
