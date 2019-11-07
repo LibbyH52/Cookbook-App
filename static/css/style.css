@@ -282,7 +282,7 @@ ul li {
     list-style: none;
 }
 
-#notEnoughRecipe .modal-content .modal-header p{
+.modal-paragraph{
     color: #f1f1f1;
     font-size: 16px;
 }
