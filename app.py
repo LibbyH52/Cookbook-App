@@ -52,6 +52,7 @@ def browse_recipes():
 # retrieves full recipe from database when a user clicks on'View Recipe' button
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
+    recipeCount =mongo.db.recipes.count()
     return render_template('displayrecipe.html', recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
 
 #selects a recipe and retreives from the database using its id and displays it in a form to allow the user to edit its properties
@@ -132,10 +133,8 @@ def insert_recipe():
 #deletes a recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    recipeCount =mongo.db.recipes.count()
-    if recipeCount > 8:
-        mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
-        return redirect(url_for('browse_recipes'))
+    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+    return redirect(url_for('browse_recipes'))
     
     
 if __name__ == '__main__':
