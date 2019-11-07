@@ -117,7 +117,7 @@ def insert_recipe():
             'ingredients':request.form.getlist('ingredient'),
             'instructions':request.form.get('instructions')
         })
-    course_name = request.form.get('course_name')
+    #course_name = request.form.get('course_name')
    # adds new course and cuisine names, if not already there
     cuisine = request.form.get('cuisine')
     if not cuisine == "":
@@ -132,8 +132,11 @@ def insert_recipe():
 #deletes a recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
-    return redirect(url_for('browse_recipes'))
+    recipeCount =mongo.db.recipes.count()
+    if recipeCount > 8:
+        mongo.db.recipes.remove({'_id':ObjectId(recipe_id)})
+        return redirect(url_for('browse_recipes'))
+    
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),
