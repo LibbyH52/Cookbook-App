@@ -52,8 +52,8 @@ def browse_recipes():
 # retrieves full recipe from database when a user clicks on'View Recipe' button
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
-    recipeCount =mongo.db.recipes.count()
-    return render_template('displayrecipe.html', recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
+    recipe_count =mongo.db.recipes.count()
+    return render_template('displayrecipe.html', recipe_count=recipe_count, recipe=mongo.db.recipes.find_one({'_id':ObjectId(recipe_id)}))
 
 #selects a recipe and retreives from the database using its id and displays it in a form to allow the user to edit its properties
 @app.route('/edit_recipe/<recipe_id>')
