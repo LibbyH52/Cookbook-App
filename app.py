@@ -118,7 +118,7 @@ def insert_recipe():
             'ingredients':request.form.getlist('ingredient'),
             'instructions':request.form.get('instructions')
         })
-    #course_name = request.form.get('course_name')
+    course_name = request.form.get('course_name')
    # adds new course and cuisine names, if not already there
     cuisine = request.form.get('cuisine')
     if not cuisine == "":
