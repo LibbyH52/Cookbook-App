@@ -89,7 +89,7 @@ def update_recipe(recipe_id):
             { "$setOnInsert": { "cuisine_name": cuisine },
             },
             upsert= True 
-        ); 
+        )
     return redirect(url_for('browse_recipes'))
     
     
@@ -126,7 +126,7 @@ def insert_recipe():
             { "$setOnInsert": { "cuisine_name": cuisine },
             },
             upsert = True 
-            ); 
+            )
     return redirect(url_for('browse_recipes'))
     
 #deletes a recipe
