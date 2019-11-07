@@ -281,6 +281,11 @@ ul li {
     list-style: none;
 }
 
+#notEnoughRecipe{
+    color: #f1f1f1;
+    font-size: 16px;
+}
+
 /********************************Form styles*/
 
 label {
