@@ -150,6 +150,15 @@ h5 {
     margin-top: 5px;
 }
 
+.btn-okay,
+.btn-okay:hover,
+.btn-okay:focus,
+.btn-okay:active,
+.btn-okay:active:focus{
+    background-color: #dd5182;
+    border: 1px solid #dd5182;
+}
+
 .close,
 .close:active,
 .close:active:focus,
