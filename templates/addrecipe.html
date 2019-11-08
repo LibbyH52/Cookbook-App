@@ -39,7 +39,7 @@
       <div class="form-group">
         <!--dynamically populates the select menu with course names-->
         <label for="course">Course Name: </label>
-        <select class="form-control" name="course" id="course">
+        <select class="form-control" name="course" id="course" required>
                 <option disabled selected>Please choose...</option>
                 {% for course in courses %}
                     <option value="{{course.course_name}}"> {{course.course_name}}</option>
@@ -70,10 +70,10 @@
     <div class="col-sm-12 col-md-12 col-lg-12">
       <!-- input boxes to add ingredients one-by-one-->
       <label for="ingredient">Ingredients: </label>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=8 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=8 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=8 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=8 required/>
       <!--buttons to add / remove input boxes-->
       <button type="button" class="new-input-btn btn-ingredient"><i class="fa fa-plus" aria-hidden="true"></i>
           </button>
