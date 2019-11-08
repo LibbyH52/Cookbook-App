@@ -7,7 +7,7 @@
   <div class="form-row">
     <div class="col-sm-12 col-md-12 col-lg-12">
       <label for="recipe_name">Recipe Name: </label>
-      <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" required>
+      <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name" minlength=6 required>
     </div>
   </div>
   <div class="form-row">
@@ -17,7 +17,7 @@
     </div>
     <div class="col-sm-12 col-md-12 col-lg-6">
       <label for="author">Recipe Author: </label>
-      <input type="text" class="form-control" name="author" id="author" placeholder="Recipe Author" required>
+      <input type="text" class="form-control" name="author" id="author" placeholder="Recipe Author" minlength=6 required>
     </div>
   </div>
   <div class="form-row">
@@ -49,7 +49,7 @@
     </div>
     <div class="col-sm-12 col-md-6 col-lg-4">
       <label for="cuisine">Cuisine Name:</label>
-      <input type="text" class="form-control" name="cuisine" id="cuisine_name" placeholder="Cuisine Name" required>
+      <input type="text" class="form-control" name="cuisine" id="cuisine_name" placeholder="Cuisine Name" minlength=5 required>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-4">
       <label for="basic-url">Allergens:</label>
@@ -70,10 +70,10 @@
     <div class="col-sm-12 col-md-12 col-lg-12">
       <!-- input boxes to add ingredients one-by-one-->
       <label for="ingredient">Ingredients: </label>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" required/>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" required/>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" required/>
-      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
+      <input type="text" class="form-control ingredient" name="ingredient" placeholder="20g plain flour sieved" minlength=10 required/>
       <!--buttons to add / remove input boxes-->
       <button type="button" class="new-input-btn btn-ingredient"><i class="fa fa-plus" aria-hidden="true"></i>
           </button>
@@ -83,7 +83,7 @@
   </div>
   <div class="form-row">
     <label for="instructions">Instructions: </label>
-    <textarea class="form-control" name="instructions" id="instructions" rows="8" required></textarea>
+    <textarea class="form-control" name="instructions" id="instructions" rows="8" minlength=50 required></textarea>
   </div>
   <div class="form-row">
     <div class="col-sm-12 col-md-6 offset-lg-2 offset-lg-2 col-lg-4">
